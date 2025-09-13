@@ -14,7 +14,7 @@
         "tab": "CAPlayground",
         "groups": [
           {
-            "group": "Introduction to CAPlayground",
+            "group": "Introduction",
             "pages": [
               "index",
               "introduction"
@@ -28,6 +28,14 @@
               "editor/creating-state-transitions",
               "editor/creating-animations",
               "editor/export-your-project"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "account/signup",
+              "account/signin",
+              "account/dashboard"
             ]
           }
         ]
