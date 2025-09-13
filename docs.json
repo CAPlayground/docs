@@ -16,6 +16,7 @@
           {
             "group": "Introduction to CAPlayground",
             "pages": [
+              "index",
               "introduction"
             ]
           },
