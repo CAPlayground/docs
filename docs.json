@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "CAPlayground",
         "groups": [
           {
             "group": "Introduction to CAPlayground",
@@ -21,40 +21,25 @@
             ]
           },
           {
-            "group": "How to use CAPlayground",
+            "group": "Editor",
             "pages": [
-              "using-cap/creating-layers",
-              "using-cap/editing-layers",
-              "using-cap/creating-state-transitions",
-              "using-cap/creating-animations",
-              "using-cap/export-your-project"
-            ]
-          },
-          {
-            "group": "Contributing to CAPlayground",
-            "pages": [
-              "contributing-cap/project-structure",
-              "contributing-cap/core-animation"
+              "editor/creating-layers",
+              "editor/editing-layers",
+              "editor/creating-state-transitions",
+              "editor/creating-animations",
+              "editor/export-your-project"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "CAPlayground Contributing",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Contributing to CAPlayground",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "contributing/project-structure",
+              "contributing/core-animation"
             ]
           }
         ]
