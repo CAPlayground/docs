@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "CAPlayground",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,38 +11,29 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction to CAPlayground",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "introduction"
             ]
           },
           {
-            "group": "Customization",
+            "group": "How to use CAPlayground",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "using-cap/creating-layers",
+              "using-cap/editing-layers",
+              "using-cap/creating-state-transitions",
+              "using-cap/creating-animations",
+              "using-cap/export-your-project"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Contributing to CAPlayground",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "contributing-cap/project-structure",
+              "contributing-cap/core-animation"
             ]
           }
         ]
