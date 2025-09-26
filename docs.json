@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "CAPlayground",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#5AD197",
+    "light": "#5AD197",
+    "dark": "#5AD197"
   },
   "favicon": "/favicon.png",
   "navigation": {
