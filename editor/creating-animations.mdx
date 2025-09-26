@@ -4,17 +4,34 @@ description: "This page will guide you on how to create animations for your CAPl
 ---
 
 Currently, you can only create the animations that are supported, shown below:
+
 <li>
-  - Keyframe Animations
+- Keyframe Animations
+
 </li>
+
 <h4>Keyframe Animations</h4>
+
 Keyframe animations have a keypath, duration, settings for repeat, and values.
 
 The `keypath` lets you pick what type of keyframe animation you want to create for a layer. You can choose these:
+
 <li>
-  - position.x (X axis position movement)
-  - position.y (Y axis position movement)
-  - transform.rotation.x (X axis rotation)
-  - transform.rotation.y (Y axis rotation)
-  - transform.rotation.z (Z axis rotation)
+- position (Both X and Y axis position movement)  
+- position.x (X axis position movement)
+- position.y (Y axis position movement)
+- transform.rotation.x (X axis rotation)
+- transform.rotation.y (Y axis rotation)
+- transform.rotation.z (Z axis rotation)
+
 </li>
+
+The `Duration (s)` lets you pick how long it takes to go from one keyframe (Value) to another. For example, if I have a duration of 1, it will take 1 second to go from my first keyframe to the next.
+
+The `Autoreverse` setting makes your keyframe animation reverse after finishing the last keyframe. This means if you have 5 keyframes, it will go from 1, 2, 3, 4, 5, 4, 3, 2, 1.
+
+The `Loop Infinitely` toggle makes your animation repeat forever **when it is turned on**, meaning it will go from 1, 2, 3, 4, 5, then loop again, starting from the first keyframe (1). This goes well with `Autoreverse`, as you can make keyframe animations that go from 1 to 5 to 1 to 5 infinitely looping. **When it is turned off**, there will be an input box under the toggle for you to enter a duration until the animation stops, for example, if it is set to 10 seconds, the animation will stop playing after 10 seconds.
+
+The `Values` are the keyframes you make in your keyframe animation. For example, if your `keypath` is position.x, there will be one input box for the X axis position. 
+
+**Note: You MUST have at least 2 values to see something happen. If you only have one value, there's no next keyframe to go to and for you to see the animation.**
