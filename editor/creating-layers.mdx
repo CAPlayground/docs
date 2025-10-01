@@ -5,11 +5,23 @@ description: "This page will guide you on how to create layers for your CAPlaygr
 
 To create layers, find the 'Add Layer' button in the Layers panel. You can create:
 
-<li>
-- Text Layer
-- Basic Layer (Shape)
-- Image Layer (Import your own images from computer or pasting from clipboard)
+<Columns cols={2}>
+  <Card title="Text Layer" icon="text">
+    A simple layer that contains text
+  </Card>
+  <Card title="Basic Layer" icon="rectangle">
+    A layer that contains a shape
+  </Card>
+  <Card title="Image Layer" icon="image">
+    A layer that contains an image
+  </Card>
+  <Card title="Video Layer" icon="video">
+    A layer that contains a video (30fps, 12s max)
+  </Card>
+</Columns>
 
-</li>
+<Warning>
+  Video layers can be very resource-intensive when applied in a wallpaper
+</Warning>
 
 More layer support will come in the future.
