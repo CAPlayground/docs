@@ -3,14 +3,111 @@ title: "Edit a Layer"
 description: "This page will guide you on how to edit layers in your CAPlayground wallpaper."
 ---
 
-To edit a layer, click on it either from the Layers panel or the Canvas, which makes the properties for the layer show in the Inspector. From the inspector, you can edit things like:
+## Selecting a Layer
 
-<li>
-- Position (X, Y)
-- Bounds (Width, Height)
-- Rotation (X, Y, Z)
-- Corner Radius
-- Animations (See [this](/editor/creating-animations.mdx))
-- More!
+Before you can edit a layer, you need to select it. There are two ways to select a layer:
 
-</li>
+1. **From the Layers panel** (left side): Click on the layer name in the list
+2. **From the Canvas** (center): Click directly on the layer in the preview
+
+When a layer is selected, you'll see:
+- A blue highlight around the layer name in the Layers panel
+- Selection handles around the layer in the Canvas
+- The layer's properties displayed in the Inspector panel (right side)
+
+---
+
+## Editing from the Inspector
+
+The **Inspector panel** on the right side shows all editable properties for the selected layer. The Inspector is organized into tabs:
+
+### Using Inspector Tabs
+
+Click on the tabs at the top of the Inspector to access different property groups:
+
+- **Properties** - Basic layer properties (position, size, rotation, etc.)
+- **Animations** - Keyframe animation settings
+- **States** - Layer state configurations
+- **Other tabs** - Depending on the layer type
+
+### Editing Properties
+
+**To edit a property value:**
+
+1. Find the property you want to change in the Inspector
+2. Click on the input field next to the property name
+3. Type the new value or use the arrow keys to increment/decrement
+4. Press **Enter** or click outside the field to apply the change
+
+**Common property types:**
+
+- **Number inputs** - Type a number or use arrow keys (e.g., Position X, Position Y)
+- **Dropdowns** - Click to open a menu and select an option (e.g., Blend Mode)
+- **Toggles/Switches** - Click to turn features on or off (e.g., Enable animation)
+- **Color pickers** - Click to open a color selector (for text and shape layers)
+
+---
+
+## Editing from the Canvas
+
+The **Canvas** provides visual, interactive editing for certain properties:
+
+### Moving Layers
+
+**To reposition a layer:**
+
+1. Click and hold on the layer in the Canvas
+2. Drag it to the desired position
+3. Release to apply the new position
+
+The Position X and Position Y values in the Inspector will update automatically as you drag.
+
+### Resizing Layers
+
+**To resize a layer:**
+
+1. Select the layer to show selection handles (small squares at the corners and edges)
+2. Click and drag a corner handle to resize proportionally
+3. Click and drag an edge handle to resize in one direction
+4. Release to apply the new size
+
+The Bounds Width and Bounds Height values in the Inspector will update automatically.
+
+**Tip:** Hold **Shift** while dragging a corner handle to maintain the layer's aspect ratio (if supported).
+
+### Rotating Layers
+
+**To rotate a layer:**
+
+1. Select the layer
+2. Look for the rotation handle (usually a circular icon or handle)
+3. Click and drag the rotation handle to rotate the layer
+4. Release to apply the rotation
+
+The Rotation value in the Inspector will update automatically.
+
+---
+
+## Available Properties
+
+The specific properties you can edit depend on the layer type. Common properties include:
+
+- **Position** (X, Y) - Layer location on the canvas
+- **Bounds** (Width, Height) - Layer dimensions
+- **Rotation** (X, Y, Z) - Layer rotation in degrees
+- **Corner Radius** - Rounded corners for shape layers
+- **Opacity** - Layer transparency
+- **Blend Mode** - How the layer blends with layers below
+- **Animations** - Keyframe animations (see [Creating Animations](/editor/creating-animations))
+- And more!
+
+**Note:** Different layer types (Text, Image, Shape, Video, etc.) have different available properties. Refer to the specific layer type documentation for detailed property information.
+
+---
+
+## Tips
+
+- **Undo/Redo**: Use **Cmd+Z** (Mac) or **Ctrl+Z** (Windows) to undo changes, and **Cmd+Shift+Z** / **Ctrl+Shift+Z** to redo
+- **Precision editing**: Use the Inspector for precise numeric values
+- **Visual editing**: Use the Canvas for quick, visual adjustments
+- **Multiple selections**: Select multiple layers to edit shared properties at once (if supported)
