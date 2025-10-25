@@ -32,7 +32,10 @@
               "editor/interface-overview",
               "editor/creating-layers",
               "editor/editing-layers",
-              "editor/layer-hierarchy"
+              "editor/layer-hierarchy",
+              "editor/creating-animations",
+              "editor/creating-state-transitions",
+              "editor/export-your-project"
             ]
           },
           {
@@ -44,14 +47,6 @@
               "layers/gradient-layers",
               "layers/video-layers",
               "layers/emitter-layers"
-            ]
-          },
-          {
-            "group": "Advanced Features",
-            "pages": [
-              "editor/creating-animations",
-              "editor/creating-state-transitions",
-              "editor/export-your-project"
             ]
           },
           {
