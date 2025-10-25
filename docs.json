@@ -21,12 +21,36 @@
             ]
           },
           {
-            "group": "Editor",
+            "group": "Getting Started",
             "pages": [
+              "getting-started/quick-start"
+            ]
+          },
+          {
+            "group": "Editor Basics",
+            "pages": [
+              "editor/interface-overview",
               "editor/creating-layers",
               "editor/editing-layers",
-              "editor/creating-state-transitions",
+              "editor/layer-hierarchy"
+            ]
+          },
+          {
+            "group": "Layer Types",
+            "pages": [
+              "layers/text-layers",
+              "layers/basic-layers",
+              "layers/image-layers",
+              "layers/gradient-layers",
+              "layers/video-layers",
+              "layers/emitter-layers"
+            ]
+          },
+          {
+            "group": "Advanced Features",
+            "pages": [
               "editor/creating-animations",
+              "editor/creating-state-transitions",
               "editor/export-your-project"
             ]
           },
@@ -41,13 +65,13 @@
         ]
       },
       {
-        "tab": "CAPlayground Contributing",
+        "tab": "Contributing",
         "groups": [
           {
             "group": "Contributing to CAPlayground",
             "pages": [
               "contributing/project-structure",
-              "contributing/core-animation"
+              "contributing/contributing"
             ]
           }
         ]

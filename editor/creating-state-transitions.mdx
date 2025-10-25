@@ -1,19 +1,140 @@
 ---
-title: "Create State Transitions"
-description: "This page will guide you on how to create state transitions for your CAPlayground wallpaper."
+title: "State Transitions"
+description: "Create dynamic wallpapers that respond to your device's lock state with smooth, automatic transitions."
 ---
 
-To create state transitions, first make sure all of the assets you want to be changed are in your `Base State`.
+State transitions allow your wallpaper to change appearance based on your device's state (locked, unlocked, or sleep), creating dynamic and interactive wallpapers.
 
-Once your assets are in the `Base State`, navigate to the bottom right corner of the right panel, where you see `Project States`. You can choose from these following states:
+## What Are State Transitions?
 
-<li>
-- Locked
-- Unlock
-- Sleep
+State transitions define how your wallpaper looks in different device states:
 
-</li>
+- **Base State**: The default appearance
+- **Locked**: How the wallpaper looks when your device is locked, on the lock screen
+- **Unlock**: How the wallpaper looks when you device is unlocked, on the home screen
+- **Sleep**: How the wallpaper looks when the device is asleep/off
 
-Once one of the states have been selected, you can position, scale, rotate, etc. any of your layers. You can also do this for other states. Here's an example:
+When you switch between states on your device, CAPlayground automatically creates smooth animations between the states.
 
-![State Transitions Demo Gi](/images/state-transitions-demo.gif)
+<Info>
+  State transitions are **automatic**! You just define how layers look in each state.
+</Info>
+
+---
+
+## How State Transitions Work
+
+### The Base State
+
+The **Base State** is your starting point:
+- This is the default state. The locked, unlock, and sleeep state will look the exact same until they are modified.
+
+<Warning>
+  You can only create animations in the **Base State**.
+</Warning>
+
+### Other States
+
+Once you have layers in the Base State, you can modify them in other states:
+
+1. Select a state (Locked, Unlock, or Sleep) from the **States Panel**
+2. The canvas shows how your wallpaper will look in that state
+3. Modify layer properties (position, opacity, rotation, etc.)
+4. Changes are saved automatically for that state
+
+**What you can modify in other states:**
+- Position (X, Y)
+- Bounds (W, H)
+- Rotation (X, Y, Z)
+- Opacity
+
+**What you CANNOT do in other states:**
+- Create or edit animations
+- Unsupported properties (they are greyed out/disabled)
+
+---
+
+## Creating State Transitions
+
+### Step 1: Set Up Your Base State
+
+1. Make sure you're in the **Base State** (check the States Panel)
+2. Create all the layers you want in your wallpaper
+3. Position and style them as they should appear when unlocked
+4. Add any animations you want (animations only work in Base State)
+
+### Step 2: Define the Locked State
+
+1. In the **States Panel** (bottom left), click **Locked**
+2. The canvas now shows the Locked state
+3. Select a layer you want to modify
+4. Change its properties in the Inspector:
+   - Move it to a different position  
+   - Change its opacity
+   - Rotate it
+   - Resize it
+
+5. Repeat for other layers if you want them to also have a different look on the Locked state.
+
+### Step 3: Define Other States (Optional)
+
+**Unlock State:**
+- How the wallpaper looks when you are on your home screen (phone is unlocked)
+
+**Sleep State:**
+- How the wallpaper looks when your phone is asleep/off.
+
+### Step 4: Test Transitions
+
+1. Switch between states in the States Panel
+2. Watch how the canvas shows the transitions smoothly
+3. Adjust properties until you're happy with the transitions
+
+<Tip>
+  Switch back and forth between Base State and Locked to see the transition preview in the editor!
+</Tip>
+
+---
+
+## Troubleshooting
+
+### "Transitions are too fast/slow"
+
+Changing the state transition timing is not supported yet.
+
+### "Some properties aren't transitioning"
+
+**Solutions:**
+- Make sure the property is supported for transitions
+- Check that the values are actually different between states
+
+### "Animations don't work in Locked state"
+
+Animations are only created and edited in the **Base State**. They will play in all states, but you can't create new animations in other states. They also sometimes do not show on iOS properly and I have no idea why.
+
+---
+
+## Demo
+
+![State Transitions Demo](/images/state-transitions-demo.gif)
+
+This demo shows how layers smoothly transition between Locked and Unlock state.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Add animations to your Base State
+  </Card>
+  <Card title="Editing Layers" icon="pen" href="/editor/editing-layers">
+    Master layer properties for transitions
+  </Card>
+  <Card title="Export Your Project" icon="download" href="/editor/export-your-project">
+    Test state transitions on your device
+  </Card>
+  <Card title="Your First Wallpaper" icon="wand-magic-sparkles" href="/getting-started/your-first-wallpaper">
+    Follow a complete tutorial
+  </Card>
+</CardGroup>

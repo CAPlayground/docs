@@ -1,4 +1,254 @@
 ---
 title: "Project Structure"
-description: "Description of your new file."
+description: "Overview of the CAPlayground repository structure and architecture."
 ---
+
+CAPlayground is built as a modern web application using Next.js, React, and TypeScript. This guide explains the project structure for contributors.
+
+## Repository Overview
+
+CAPlayground is a monorepo containing the web application and related packages.
+
+```
+caplayground/
+├── apps/
+│   └── web/              # Main Next.js web application
+├── .github/              # GitHub workflows and templates
+├── LICENSE               # MIT License
+└── README.md             # Project README
+```
+
+---
+
+## Web Application Structure
+
+The main application is located in `apps/web/`:
+
+```
+apps/web/
+├── app/                  # Next.js App Router pages
+│   ├── account/          # Account management pages
+│   ├── dashboard/        # User dashboard
+│   ├── projects/         # Project listing
+│   ├── wallpapers/       # Community wallpapers
+│   ├── api/              # API routes
+│   └── ...               # Other pages
+├── components/           # React components
+│   ├── editor/           # Editor-specific components
+│   ├── ui/               # Reusable UI components (shadcn/ui)
+│   └── ...               # Other components
+├── lib/                  # Utility libraries
+│   ├── ca/               # Core Animation types and logic
+│   ├── supabase/         # Supabase client
+│   └── utils.ts          # Utility functions
+├── hooks/                # Custom React hooks
+├── public/               # Static assets
+└── styles/               # Global styles
+```
+
+---
+
+## Key Directories
+
+### `app/` - Pages and Routes
+
+Next.js App Router pages:
+
+**User-facing pages:**
+- `app/page.tsx` - Homepage
+- `app/dashboard/page.tsx` - User dashboard
+- `app/projects/page.tsx` - Project editor
+- `app/wallpapers/page.tsx` - Community wallpapers
+
+**Account pages:**
+- `app/signin/page.tsx` - Sign in
+- `app/account/page.tsx` - Account settings
+- `app/forgot-password/page.tsx` - Password reset
+
+**API routes:**
+- `app/api/account/delete/route.ts` - Account deletion
+- Other API endpoints as needed
+
+### `components/` - React Components
+
+**Editor components** (`components/editor/`):
+- `editor-context.tsx` - Main editor state management
+- `layers-panel.tsx` - Layers list and management
+- `canvas-preview.tsx` - Visual canvas preview
+- `settings-panel.tsx` - Editor settings
+- `states-panel.tsx` - State transitions panel
+- `inspector/` - Property inspector components
+
+**UI components** (`components/ui/`):
+- Built with shadcn/ui
+- Reusable components (Button, Card, Dialog, etc.)
+- Follows shadcn/ui conventions
+
+### `lib/` - Core Logic
+
+**Core Animation** (`lib/ca/`):
+- `types.ts` - TypeScript types for layers, projects, animations
+- Core Animation data structures
+- Export/import logic
+
+**Supabase** (`lib/supabase/`):
+- Supabase client configuration
+- Authentication helpers
+- Database queries
+
+**Utilities** (`lib/utils.ts`):
+- Helper functions
+- Common utilities
+
+### `hooks/` - Custom Hooks
+
+Custom React hooks for:
+- Local storage
+- Editor state
+- Authentication
+- And more
+
+---
+
+## Core Animation System
+
+The Core Animation system is the heart of CAPlayground:
+
+### Layer Types
+
+Defined in `lib/ca/types.ts`:
+
+- `TextLayer` - Text content
+- `ShapeLayer` - Geometric shapes
+- `ImageLayer` - Images
+- `GradientLayer` - Color gradients
+- `VideoLayer` - Animated videos
+- `EmitterLayer` - Particle effects
+- `GroupLayer` - Layer containers
+
+### Project Structure
+
+A CAPlayground project (`CAProjectBundle`) contains:
+
+- `project` - Project metadata (name, dimensions, etc.)
+- `root` - Root layer (can be a group with children)
+- `assets` - Embedded images, videos, etc.
+- `states` - List of states (Base, Locked, Unlock, Sleep)
+- `stateOverrides` - Property overrides per state
+- `stateTransitions` - Transition configurations
+
+### Export Formats
+
+- **.CA** - CAPlayground project format (JSON)
+- **.tendies** - iOS wallpaper format (for PocketPoster/Nugget)
+
+---
+
+## Editor Architecture
+
+### State Management
+
+The editor uses React Context for state management:
+
+**`EditorContext`** (`components/editor/editor-context.tsx`):
+- Manages the entire project state
+- Provides actions for modifying layers
+- Handles undo/redo
+- Manages state transitions
+
+**Key actions:**
+- `addTextLayer()`, `addImageLayer()`, etc.
+- `updateLayer()` - Update layer properties
+- `deleteLayer()` - Remove a layer
+- `selectLayer()` - Select a layer
+- `moveLayer()` - Reorder layers
+- And many more
+
+### Component Structure
+
+**Editor layout:**
+```
+EditorProvider
+├── MenuBar (top)
+├── LayersPanel (left)
+├── CanvasPreview (center)
+├── InspectorPanel (right)
+│   ├── PropertiesTab
+│   ├── ContentTab
+│   ├── AnimationsTab
+│   ├── CompositingTab
+│   └── GeometryTab
+└── StatesPanel (bottom right)
+```
+
+---
+
+## Development Workflow
+
+### Running Locally
+
+```bash
+# Install dependencies
+bun install
+
+# Start dev server
+bun run dev
+
+# Open http://localhost:3000
+```
+
+### Environment Variables
+
+Create `.env.local` for Supabase (optional):
+
+```
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_key
+```
+
+Without these, the app runs but auth features are disabled.
+
+### Building
+
+```bash
+# Build for production
+bun run build
+
+# Start production server
+bun run start
+```
+
+---
+
+## Resources
+
+**Documentation:**
+- [Next.js Docs](https://nextjs.org/docs)
+- [React Docs](https://react.dev)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [shadcn/ui](https://ui.shadcn.com)
+
+**CAPlayground:**
+- [Contributing Guide](https://github.com/CAPlayground/CAPlayground/blob/main/.github/CONTRIBUTING.md)
+- [GitHub Repository](https://github.com/CAPlayground/CAPlayground)
+- [Discord Community](https://discord.gg/8rW3SHsK8b)
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Core Animation" icon="code" href="/contributing/core-animation">
+    Learn about Core Animation in Posterboard wallpapers
+  </Card>
+  <Card title="GitHub Repository" icon="github" href="https://github.com/CAPlayground/CAPlayground">
+    View the source code
+  </Card>
+  <Card title="Contributing Guide" icon="book" href="https://github.com/CAPlayground/CAPlayground/blob/main/.github/CONTRIBUTING.md">
+    Read the full contributing guide
+  </Card>
+  <Card title="Discord Community" icon="discord" href="https://discord.gg/8rW3SHsK8b">
+    Join the community
+  </Card>
+</CardGroup>

@@ -1,30 +1,245 @@
 ---
-title: "Create Layers"
-description: "This page will guide you on how to create layers for your CAPlayground wallpaper."
+title: "Creating Layers"
+description: "Learn how to create and add layers to your CAPlayground wallpaper, including where to create them and how to organize them."
 ---
 
-To create layers, find the 'Add Layer' button in the Layers panel. You can create:
+Layers are the building blocks of your wallpaper. Each layer represents a visual element like text, shapes, images, or effects.
 
-<Columns cols={2}>
-  <Card title="Text Layer" icon="text">
-    A simple layer that contains text
-  </Card>
-  <Card title="Basic Layer" icon="rectangle">
-    A layer that contains a shape
-  </Card>
-  <Card title="Gradient Layer" icon="blend">
-    A layer that contains a gradient (axial/linear, radial, conic)
-  </Card>
-  <Card title="Image Layer" icon="image">
-    A layer that contains an image
-  </Card>
-  <Card title="Video Layer" icon="video">
-    A layer that contains a video (30fps, 12s max)
-  </Card>
-</Columns>
+## How to Create Layers
+
+### Using the Add Layer Button
+
+1. Locate the **Layers Panel** on the left side of the editor
+2. Click the **Add Layer** button (with a + icon)
+3. Select the type of layer you want to create from the dropdown menu
+
+The new layer will be created and added to your layer list.
+
+### Where Layers Are Created
+
+**By default**, new layers are added:
+- **At the top** of the current layer list (in the Base State)
+- **As root layers (when no layer is selected)**
+- **As sublayers (when a layer is selected)**
+- **At the center** of your canvas
+
+<Info>
+  Layers higher in the list appear **in front of** layers lower in the list. Think of it like stacking papers on a desk.
+</Info>
+
+### Creating Sublayers (a layer inside another layer)
+
+To create a layer as a **sublayer** inside a layer:
+
+1. Select an existing layer you want the sublayer to be created in
+2. Create a new layer
+3. The layer will become a child of the layer
+
+<Tip>
+  Putting layers inside other layers help you organize related elements and apply transformations to multiple layers at once!
+</Tip>
+
+---
+
+## Available Layer Types
+
+CAPlayground supports six types of layers, each with unique capabilities:
+
+### Text Layer
+
+A layer that displays text with customizable fonts, colors, and alignment.
+
+**Best for:**
+- Titles and headings
+- Labels and captions
+- Dynamic text content
+
+**Key features:**
+- Custom fonts
+- Text alignment (left, center, right, justified)
+- Text wrapping
+- Color and opacity
+
+[Learn more about Text Layers →](/layers/text-layers)
+
+---
+
+### Basic Layer (Shape)
+
+A layer that displays geometric shapes like rectangles, circles, and rounded rectangles.
+
+**Best for:**
+- Backgrounds and containers
+- Decorative elements
+- Solid background for a wallpaper
+
+**Key features:**
+- Three shape types: Rectangle, Circle, Rounded Rectangle
+- Fill and stroke colors
+- Stroke width
+- Corner radius
+
+[Learn more about Basic Layers →](/layers/basic-layers)
+
+---
+
+### Gradient Layer
+
+A layer that displays smooth color gradients.
+
+**Best for:**
+- Backgrounds
+- Color overlays
+- Visual effects
+
+**Key features:**
+- Three gradient types: Axial (linear), Radial, Conic
+- Multiple color stops
+- Adjustable start and end points
+- Opacity per color
+
+[Learn more about Gradient Layers →](/layers/gradient-layers)
+
+---
+
+### Image Layer
+
+A layer that displays an image from your computer.
+
+**Best for:**
+- Photos and illustrations
+- Logos and icons
+- Textures and patterns
+
+**Key features:**
+- Supports PNG, JPEG, WebP, BMP, SVG
+- Multiple fit modes (cover, contain, fill, none)
+- Drag and drop support
+- Multiple image upload
+
+**How to create:**
+1. Click **Add Layer** → **Image Layer…**
+2. Select one or more image files from your computer
+3. Each image will be added as a separate layer
+
+<Info>
+  You can drag and drop images directly onto the canvas to create image layers quickly!
+</Info>
+
+[Learn more about Image Layers →](/layers/image-layers)
+
+---
+
+### Video Layer
+
+A layer that displays an animated video or GIF.
+
+**Best for:**
+- Animated backgrounds
+- Moving elements
+- GIF animations
+
+**Key features:**
+- Supports video files and GIFs
+- Maximum 30 fps
+- Maximum 12 seconds duration
+- Auto-reverse option
+- Frame-based animation
+
+**How to create:**
+1. Click **Add Layer** → **Video Layer…**
+2. Select a video file or GIF from your computer
+3. The video will be processed and added to your project
 
 <Warning>
-  Video layers can be very resource-intensive when applied in a wallpaper
+  Video layers can be very resource-intensive when applied as a wallpaper. Use them sparingly for best performance on your device.
 </Warning>
 
-More layer support will come in the future.
+<Info>
+  GIF files must be imported as Video Layers, not Image Layers. CAPlayground will remind you if you try to upload a GIF as an image.
+</Info>
+
+[Learn more about Video Layers →](/layers/video-layers)
+
+---
+
+### Emitter Layer
+
+A layer that creates particle effects like snow, rain, sparkles, and more.
+
+**Best for:**
+- Particle effects
+- Animated backgrounds
+- Special effects
+
+**Key features:**
+- Multiple emitter shapes (point, line, rectangle, circle, etc.)
+- Customizable particles (emitter cells)
+- Particle properties (velocity, lifetime, scale, rotation, etc.)
+- Render modes (unordered, additive)
+
+**How to create:**
+1. Click **Add Layer** → **Emitter Layer**
+2. Configure the emitter properties in the Inspector
+3. Add and customize emitter cells (particles)
+
+<Tip>
+  Emitter layers are advanced! Start with simple effects and experiment to learn how they work.
+</Tip>
+
+[Learn more about Emitter Layers →](/layers/emitter-layers)
+
+---
+
+## Layer Organization
+
+### Layer Order
+
+The order of layers in the Layers Panel determines their visual stacking:
+- **Top of the list** = **Back** of the wallpaper (appears behind)
+- **Bottom of the list** = **Front** of the wallpaper (appears on top)
+
+**To reorder layers:**
+1. Click and drag a layer in the Layers Panel
+2. Drop it above or below other layers
+3. A blue line shows where the layer will be placed
+
+<Info>
+  Currently, you cannot create empty group layers directly. Create layers first, then organize them into groups by dragging.
+</Info>
+
+[Learn more about Layer Hierarchy →](/editor/layer-hierarchy)
+
+---
+
+## Layer Limits
+
+### Performance Considerations
+
+- **Keep it simple**: More layers = more processing power required
+- **Optimize images**: Use appropriate image sizes (don't use 4K images if not needed)
+- **Limit video layers**: Video layers are the most resource-intensive
+- **Limit emitter layers**: Particle effects can impact performance
+
+<Tip>
+  Test your wallpaper on your device early and often to ensure good performance!
+</Tip>
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Editing Layers" icon="pen" href="/editor/editing-layers">
+    Learn how to modify and customize your layers
+  </Card>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Master groups and sublayers for better organization
+  </Card>
+  <Card title="Layer Types" icon="layer-group" href="/layers/text-layers">
+    Explore detailed guides for each layer type
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Bring your layers to life with animations
+  </Card>
+</CardGroup>

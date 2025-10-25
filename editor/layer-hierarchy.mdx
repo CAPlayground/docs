@@ -1,0 +1,164 @@
+---
+title: "Layer Hierarchy"
+description: "Learn how to organize layers using sublayers for better structure and control."
+---
+
+Layer hierarchy allows you to organize your wallpaper into a structured tree of layers and sublayers, making complex projects easier to manage.
+
+## Understanding Layer Hierarchy
+
+### What is a Layer Hierarchy?
+
+A layer hierarchy is a parent-child relationship between layers:
+- **Parent layers** can contain **child layers** (called **sublayers**)
+- Sublayers inherit transformations from their parent layer
+- Sublayers can be nested multiple levels deep
+
+<Info>
+  In CAPlayground, there are no dedicated "group" layers. Any layer can act as a parent and contain sublayers.
+</Info>
+
+**Example hierarchy:**
+```
+Root Layer
+├─ Background Container (Basic Layer - opacity 0%, acts as a container)
+│  ├─ Gradient Layer
+│  └─ Image Layer
+└─ Content Container (Basic Layer - opacity 0%, acts as a container)
+   ├─ Title Text
+   └─ Icons Container (Basic Layer - opacity 0%)
+       ├─ Icon 1
+       ├─ Icon 2
+       └─ Icon 3
+```
+
+---
+
+## Creating Sublayers
+
+### How to Add Sublayers
+
+To create a sublayer inside an existing layer:
+
+1. **Select the parent layer** in the Layers Panel or Canvas
+2. Click **Add Layer** and choose a layer type
+3. The new layer will be created as a sublayer of the selected layer
+
+<Tip>
+  If no layer is selected, new layers are created at the root level.
+</Tip>
+
+
+### Removing Sublayers
+
+To move a sublayer back to the root level:
+
+1. **Drag the sublayer** from the Layers Panel
+2. **Drop it** outside its parent (above or below other root layers)
+3. The layer becomes a root layer again
+
+---
+
+## Using Sublayers that act like a Container
+
+### What Are Containers?
+
+Since any layer can have sublayers, you can create a so called **container layer** to organize related elements:
+
+**Common approach:**
+- Create a **Basic Layer**
+- Set its **opacity to 0%** to make it invisible
+- Add other layers as sublayers
+- The invisible layer acts as a container
+
+**Why use containers?**
+- **Organization**: Group related layers together
+- **Batch transformations**: Move multiple layers at once
+
+**Example:**
+```
+Background Container (Basic Layer, opacity 0%)
+├─ Gradient Layer
+└─ Image Layer
+```
+
+When you move the container, all sublayers move together.
+
+---
+
+## How Sublayers Inherit Transformations
+
+### Position
+
+Sublayer positions are **relative to their parent**:
+- If a parent is at position (100, 100)
+- And a sublayer is at position (50, 50)
+- The sublayer appears at (150, 150) on the canvas
+
+Moving the parent moves all sublayers with it.
+
+---
+
+## Advanced Properties
+
+### Flip Geometry
+
+Controls the coordinate system for sublayers:
+
+**Location:** Geometry tab in the Inspector
+
+**Values:**
+- **Off**: Bottom-left origin
+- **On**: Top-left origin
+
+**What it does:**
+- Changes how sublayer positions are calculated
+- Affects the Y-axis direction for sublayers
+- Useful when importing designs from different coordinate systems
+
+**Example:**
+- With Flip Geometry **off**: Y increases upward (0 at bottom)
+- With Flip Geometry **on**: Y increases downward (0 at top)
+
+<Info>
+  Flip Geometry only affects the layer's sublayers, not the layer itself.
+</Info>
+
+### Clip Contents
+
+Controls whether sublayers are clipped to the parent's bounds:
+
+**Location:** Compositing tab in the Inspector
+
+**Values:**
+- **Off**: Sublayers can extend beyond the parent's bounds (default)
+- **On**: Sublayers are clipped to the parent's bounds
+
+**What it does:**
+- When **on**, sublayers are masked to the parent's rectangular area
+- Useful for creating "window" effects
+
+**Example:**
+```
+Container (300x300, Clip Contents: On)
+└─ Large Image (500x500) → Only 300x300 visible
+```
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Creating Layers" icon="plus" href="/editor/creating-layers">
+    Learn how to create different types of layers
+  </Card>
+  <Card title="Editing Layers" icon="pen" href="/editor/editing-layers">
+    Master layer properties and editing
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Animate groups and sublayers
+  </Card>
+  <Card title="Layer Types" icon="layer-group" href="/layers/text-layers">
+    Explore detailed guides for each layer type
+  </Card>
+</CardGroup>

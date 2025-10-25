@@ -1,0 +1,149 @@
+---
+title: "Interface Overview"
+description: "Learn about the CAPlayground editor interface and its main components."
+---
+
+The CAPlayground editor is designed to be intuitive and powerful. Understanding the interface will help you work more efficiently.
+
+## Main Interface Areas
+
+The editor is divided into four main areas:
+
+- **Layers Panel** (left): Manage all your layers
+- **Canvas** (center): Visual preview of your wallpaper
+- **Inspector Panel** (right): Edit properties of selected layers
+- **States Panel** (bottom left): Manage different device states (locked, unlocked, sleep)
+
+### 1. Layers Panel (Left)
+
+The Layers Panel is where you manage all the layers in your wallpaper.
+
+**Features:**
+- **Add Layer button**: Click to create new layers (Text, Basic, Gradient, Image, Video, Emitter)
+- **Layer list**: Shows all layers in your project in a hierarchical tree
+- **Layer actions**: Right-click or use the three-dot menu for options like Rename, Duplicate, Delete
+- **Drag and drop**: Reorder layers by dragging them
+
+**Layer Indicators:**
+- **Chevron icon** (▶/▼): Indicates a group layer with sublayers; click to expand/collapse
+- **Green highlight**: Shows the currently selected layer
+- **Layer name and type**: Each layer shows its name and type (e.g., "Basic Layer")
+
+<Tip>
+  Double-click a layer name to rename it. Good naming helps you stay organized!
+</Tip>
+
+---
+
+### 2. Canvas (Center)
+
+The Canvas is your visual workspace where you see and interact with your wallpaper.
+
+**Features:**
+- **Visual preview**: See your wallpaper exactly as it will appear
+- **Direct manipulation**: Click and drag layers to move them
+- **Selection handles**: Resize layers by dragging corner or edge handles
+- **Rotation handles**: Rotate layers using the rotation handle
+
+**Canvas Controls:**
+- **Zoom**: Hold **Shift** and scroll up or down, or use the + and - buttons in the top right corner of the canvas to zoom in/out
+- **Pan**: Hold **Shift** and drag to pan around the canvas
+- **Grid/Guides**: Snapping helps align layers precisely (configurable in Editor Settings)
+
+<Info>
+  The canvas shows your wallpaper at your device's actual resolution. What you see is what you get!
+</Info>
+
+---
+
+### 3. Inspector Panel (Right)
+
+The Inspector Panel shows detailed properties for the selected layer.
+
+**General Tabs (on most layers):**
+- **Geometry**: Basic layer properties (position, bounds, rotation, anchor point, etc.)
+- **Compositing**: Opacity, corner radius, clip contents
+- **Content**: Background color, background opacity, border color, border width
+- **Animations**: Keyframe animation settings
+
+<Info>
+  Each tab is specific to the layer type. For example, Image layers have an additional **Image** tab for image-specific properties.
+</Info>
+
+**Common Properties:**
+- **Position (X, Y)**: Layer location on the canvas
+- **Bounds (W, H)**: Layer dimensions
+- **Rotation (X, Y, Z)**: Layer rotation in degrees
+- **Opacity**: Layer transparency
+- **Corner Radius**: Rounded corners
+- **Background Color**: Layer background fill
+- **Border**: Border color and width
+
+<Tip>
+  Use the Inspector for precise numeric values. Use the Canvas for quick visual adjustments.
+</Tip>
+
+---
+
+### 4. States Panel (Bottom Left)
+
+The States Panel lets you create a different look for your wallpaper when on different device states, like your device being on the lock screen, home screen, or sleep (off).
+
+**Available States:**
+- **Base State**: The default state (just as the default for each state, doesn't exist on device)
+- **Locked**: How the wallpaper looks when your device is on the lock screen
+- **Unlock**: How the wallpaper looks when your device is on the home screen
+- **Sleep**: How the wallpaper looks when your device is off
+
+**How It Works:**
+1. Select a state (e.g., "Locked")
+2. Modify layer properties (position, opacity, etc.)
+3. CAPlayground automatically creates smooth transitions between states
+
+---
+
+## Menu Bar (Top)
+
+The menu bar provides quick access to important functions:
+
+- **Project Name**: Shows the current project name (click to rename). This is a dropdown that also lets you go back to the Projects page, rename your project, or delete your project.
+- **Undo/Redo**: Undo (Cmd/Ctrl+Z) and Redo (Cmd/Ctrl+Shift+Z)
+- **Settings**: Configure editor preferences (snapping options, keyboard shortcuts, etc.)
+- **Export**: Export your wallpaper as .CA zip file or .tendies file (Cmd/Ctrl+E)
+- **Save Status**: Auto-saves to your device (You can manually save by hovering over the status)
+
+---
+
+## Customizing the Interface
+
+You can customize the editor to fit your workflow:
+
+1. **Resize panels**: Drag the edges between panels to resize them
+2. **Collapse panels**: Some panels can be collapsed to give you more canvas space
+3. **Settings**: Open Settings (gear icon) to configure:
+   - Snap to edges
+   - Snap to other layers
+   - Snap threshold
+   - Show anchor points
+   - And more!
+
+---
+
+## Next Steps
+
+Now that you understand the interface, learn how to use it:
+
+<CardGroup cols={2}>
+  <Card title="Creating Layers" icon="plus" href="/editor/creating-layers">
+    Learn how to add different types of layers
+  </Card>
+  <Card title="Editing Layers" icon="pen" href="/editor/editing-layers">
+    Master layer editing and properties
+  </Card>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Organize layers with groups and sublayers
+  </Card>
+  <Card title="Your First Wallpaper" icon="wand-magic-sparkles" href="/getting-started/your-first-wallpaper">
+    Follow a complete tutorial
+  </Card>
+</CardGroup>
