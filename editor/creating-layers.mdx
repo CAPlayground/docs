@@ -43,7 +43,7 @@ To create a layer as a **sublayer** inside a layer:
 
 ## Available Layer Types
 
-CAPlayground supports six types of layers, each with unique capabilities:
+CAPlayground supports seven types of layers, each with unique capabilities:
 
 ### Text Layer
 
@@ -188,6 +188,32 @@ A layer that creates particle effects like snow, rain, sparkles, and more.
 </Tip>
 
 [Learn more about Emitter Layers →](/layers/emitter-layers)
+
+---
+
+### Transform Layer (CATransformLayer)
+
+A special container layer for gyro wallpapers that makes sublayers respond to device tilt.
+
+**For:**
+- Gyro wallpapers with parallax effects
+- Device tilt-responsive designs
+
+**Key features:**
+- Responds to device gyroscope (tilting your device can move or rotate the layer.)
+- Configurable tilt response (axis, property, range)
+
+**How to create:**
+1. Create or open a **gyro wallpaper** project
+2. Click **Add Layer** → **Transform Layer**
+3. Add sublayers to the transform layer
+4. Configure gyro effects in the **Gyro** tab of the Transform Layer.
+
+<Warning>
+  Transform Layers are only available in gyro wallpaper projects. They won't appear in the layer menu for regular wallpapers.
+</Warning>
+
+[Learn more about Transform Layers →](/layers/transform-layers)
 
 ---
 

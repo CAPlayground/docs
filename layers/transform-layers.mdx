@@ -1,0 +1,174 @@
+---
+title: "Transform Layers (Gyro)"
+description: "Complete guide to creating transform layers for gyro wallpapers that respond to device tilt."
+---
+
+Transform layers (also known as CATransformLayer) are special container layers used exclusively for gyro wallpapers. They enable your wallpaper to respond to device tilt, creating a parallax effect.
+
+<Info>
+  Transform layers are only available when creating gyro wallpapers. They won't appear in the layer menu for regular wallpapers.
+</Info>
+
+## What is a Transform Layer?
+
+A transform layer is an invisible container that holds other layers and applies 3D transformations to them based on device motion. When you tilt your device, the transform layer's contents move in response, creating a depth effect.
+
+**Key characteristics:**
+- Acts as a container for other layers (sublayers)
+- Invisible itself (no visual appearance)
+- Responds to device gyroscope data
+- Creates parallax and depth effects
+
+---
+
+## Creating a Transform Layer
+
+Transform layers are only available in gyro wallpaper projects:
+
+1. Create or open a **gyro wallpaper** project. **Make sure you have selected `Enable Gyro (Parallax Effect)` when creating the project**
+2. Select the FLOATING layer or the BACKGROUND layer. Gyro wallpapers don't use seperate files for background and floating, instead they use a single file for both.
+3. Click **Add Layer** in the Layers Panel. 
+4. Select **Transform Layer**
+5. A new transform layer will be added to your project. The transform layer will be added into the FLOATING or the BACKGROUND layer, depending on which one you selected. **Make sure you read the next section!**
+
+### Adding Sublayers to Your Transform Layer
+
+<Warning>
+  **Important:** You must add sublayers inside the transform layer to see any gyro effects. The sublayers are what actually move when you tilt your device!
+</Warning>
+
+**To add layers that respond to gyro:**
+
+1. Select the transform layer you just created
+2. Click **Add Layer** and choose any layer type (Text, Image, Basic, etc.)
+3. The new layer will be added as a sublayer inside the transform layer
+4. This sublayer will now respond to device tilt based on your gyro settings
+
+**Moving existing layers into a transform layer:**
+
+- **Drag layers** in the Layers Panel into a transform layer to make them respond to gyro
+- **Drag layers out** of a transform layer to remove gyro effects
+
+[Learn more about Layer Hierarchy →](/editor/layer-hierarchy)
+
+---
+
+## How Transform Layers Work
+
+### The Gyro Effect
+
+When you create a transform layer, you can configure how it responds to device tilt:
+
+**Gyro Dictionaries** define the relationship between device tilt and layer properties:
+- **Axis**: Which tilt direction to respond to (X for left/right, Y for up/down)
+- **Key Path**: Which property to animate (position or rotation)
+- **Map Min/Max**: The range of values for the animation
+
+### Example Use Case
+
+Imagine a wallpaper with a background image and foreground text:
+
+```
+Transform Layer (responds to tilt)
+├─ Background Image 
+└─ Text Layer
+```
+
+When you tilt your device:
+- The text layer is on the background image
+- The text layer moves together with the background image when you tilt your device
+
+---
+
+## Configuring Gyro Effects
+
+### Accessing the Gyro Tab
+
+1. Select a transform layer
+2. Click on the **Gyro** tab in the Inspector Panel
+3. Click **+ Add Dictionary** to create a new gyro effect
+
+### Gyro Dictionary Settings
+
+Each dictionary controls one aspect of the gyro response:
+
+#### Title
+A descriptive name for this gyro effect (e.g., "Horizontal Shift", "Tilt Rotation"). This doesn't matter, it is just for you to keep track of what the dictionary does.
+
+#### Axis
+Choose which device tilt direction triggers this effect:
+- **X (Left/Right)**: Responds when you tilt the device left or right
+- **Y (Up/Down)**: Responds when you tilt the device up or down
+
+#### Key Path
+Select which property to animate:
+- **position.x**: Move horizontally
+- **position.y**: Move vertically
+- **transform.rotation.x**: Rotate around the X-axis (pitch)
+- **transform.rotation.y**: Rotate around the Y-axis (yaw)
+
+#### Map Min To / Map Max To
+Define the range of motion:
+- **For position**: Values in pixels (e.g., -50 to 50 means 50px movement in each direction)
+- **For rotation**: Values in radians (e.g., -0.5 to 0.5 for subtle rotation)
+
+<Info>
+Tips and Info:
+  - You can add up to 10 gyro dictionaries per transform layer, allowing you to combine multiple effects (e.g., both horizontal movement and rotation).
+  - One radian is 57.2958 degrees.
+</Info>
+
+---
+
+## Testing Gyro Effects
+
+### In the Editor
+
+Use the **Gyro Controls** panel. To enable this:
+
+1. Click on the **Toggle gyro** button on the bottom right corner of the canvas. The Gyro panel will appear on the bottom left of the canvas.
+2. Toggle between **Grid** and **Phone** view. The grid is a representation of your device's screen, while the phone is a 3D representation of your device to tilt.
+3. **Grid view**: Drag the knob to simulate tilt.
+4. **Phone view**: Drag the phone device to see the effect.
+5. Click the **crosshair icon** to recenter.
+
+### On Your Device
+
+1. Export your gyro wallpaper as a .tendies file.
+2. Apply it to your device using Pocket Poster or Nugget. See [Exporting Your Project](/editor/export-your-project) for more information.
+3. Tilt your device to see the effect in action
+4. Adjust the Map Min/Max values if the effect is too subtle or too strong
+
+---
+
+## Troubleshooting
+
+### "I don't see Transform Layer in the menu"
+
+Transform layers are only available for gyro wallpaper projects. Make sure you're working on a gyro wallpaper, not a regular wallpaper. You enable this on the create project screen when creating a new project.
+
+### "The gyro effect isn't working"
+
+**Check these:**
+- Have you added at least one gyro dictionary?
+- Are the Map Min/Max values large enough to see movement?
+- Have you added sublayers to the transform layer?
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Learn how to organize sublayers effectively
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Combine gyro with keyframe animations
+  </Card>
+  <Card title="Basic Layers" icon="square" href="/layers/basic-layers">
+    Use basic layers as containers
+  </Card>
+  <Card title="Exporting Your Project" icon="download" href="/editor/export-your-project">
+    Export and apply your gyro wallpaper
+  </Card>
+</CardGroup>

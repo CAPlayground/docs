@@ -46,7 +46,8 @@
               "layers/image-layers",
               "layers/gradient-layers",
               "layers/video-layers",
-              "layers/emitter-layers"
+              "layers/emitter-layers",
+              "layers/transform-layers"
             ]
           },
           {

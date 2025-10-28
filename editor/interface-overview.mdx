@@ -19,10 +19,14 @@ The editor is divided into four main areas:
 The Layers Panel is where you manage all the layers in your wallpaper.
 
 **Features:**
-- **Add Layer button**: Click to create new layers (Text, Basic, Gradient, Image, Video, Emitter)
+- **Add Layer button**: Click to create new layers (Text, Basic, Gradient, Image, Video, Emitter, Transform)
 - **Layer list**: Shows all layers in your project in a hierarchical tree
 - **Layer actions**: Right-click or use the three-dot menu for options like Rename, Duplicate, Delete
 - **Drag and drop**: Reorder layers by dragging them
+
+<Info>
+  Transform Layers are only available in gyro wallpaper projects and enable device tilt effects. [Learn more →](/layers/transform-layers)
+</Info>
 
 **Layer Indicators:**
 - **Chevron icon** (▶/▼): Indicates a group layer with sublayers; click to expand/collapse
@@ -49,10 +53,19 @@ The Canvas is your visual workspace where you see and interact with your wallpap
 - **Zoom**: Hold **Shift** and scroll up or down, or use the + and - buttons in the top right corner of the canvas to zoom in/out
 - **Pan**: Hold **Shift** and drag to pan around the canvas
 - **Grid/Guides**: Snapping helps align layers precisely (configurable in Editor Settings)
+- **Gyro Controls** (gyro wallpapers only): Bottom-left panel to simulate device tilt
 
 <Info>
   The canvas shows your wallpaper at your device's actual resolution. What you see is what you get!
 </Info>
+
+**Gyro Controls Panel (Gyro Wallpapers Only):**
+
+When working on a gyro wallpaper, a control panel appears in the bottom-left corner:
+- **Grid/Phone toggle**: Switch between grid view and phone visualization
+- **Grid view**: Drag the knob to simulate device tilt
+- **Phone view**: Drag the 3D phone to see realistic tilt effects
+- **Recenter button**: Reset tilt to neutral position (crosshair icon)
 
 ---
 
@@ -65,9 +78,10 @@ The Inspector Panel shows detailed properties for the selected layer.
 - **Compositing**: Opacity, corner radius, clip contents
 - **Content**: Background color, background opacity, border color, border width
 - **Animations**: Keyframe animation settings
+- **Gyro**: Configure device tilt effects (Transform Layers only)
 
 <Info>
-  Each tab is specific to the layer type. For example, Image layers have an additional **Image** tab for image-specific properties.
+  Each tab is specific to the layer type. For example, Image layers have an **Image** tab, and Transform Layers have a **Gyro** tab for configuring tilt effects.
 </Info>
 
 **Common Properties:**

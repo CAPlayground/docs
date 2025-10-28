@@ -65,15 +65,16 @@ To move a sublayer back to the root level:
 
 Since any layer can have sublayers, you can create a so called **container layer** to organize related elements:
 
-**Common approach:**
-- Create a **Basic Layer**
-- Set its **opacity to 0%** to make it invisible
+**Common approaches:**
+- Create a **Basic Layer** and set its **opacity to 0%** to make it invisible
+- Create a **Transform Layer (CATransformLayer)** for gyro wallpapers
 - Add other layers as sublayers
-- The invisible layer acts as a container
+- The container layer acts as a parent
 
 **Why use containers?**
 - **Organization**: Group related layers together
 - **Batch transformations**: Move multiple layers at once
+- **Gyro effects**: Use Transform Layers to make sublayers respond to device tilt
 
 **Example:**
 ```
@@ -82,7 +83,17 @@ Background Container (Basic Layer, opacity 0%)
 └─ Image Layer
 ```
 
-When you move the container, all sublayers move together.
+**Gyro example:**
+```
+Transform Layer (for gyro wallpapers)
+├─ Image Layer (this layer will respond to device tilt)
+```
+
+When you move the container, all sublayers move together. For Transform Layers, sublayers respond to device tilt.
+
+<Info>
+  Transform Layers (CATransformLayer) are only available in gyro wallpaper projects. [Learn more about Transform Layers →](/layers/transform-layers)
+</Info>
 
 ---
 
@@ -158,7 +169,7 @@ Container (300x300, Clip Contents: On)
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
     Animate groups and sublayers
   </Card>
-  <Card title="Layer Types" icon="layer-group" href="/layers/text-layers">
-    Explore detailed guides for each layer type
+  <Card title="Transform Layers (Gyro)" icon="mobile-screen" href="/layers/transform-layers">
+    Create gyro wallpapers with device tilt effects
   </Card>
 </CardGroup>
