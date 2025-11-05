@@ -14,6 +14,7 @@ Transform layers (also known as CATransformLayer) are special container layers u
 A transform layer is an invisible container that holds other layers and applies 3D transformations to them based on device motion. When you tilt your device, the transform layer's contents move in response, creating a depth effect.
 
 **Key characteristics:**
+
 - Acts as a container for other layers (sublayers)
 - Invisible itself (no visual appearance)
 - Responds to device gyroscope data
@@ -25,14 +26,15 @@ A transform layer is an invisible container that holds other layers and applies 
 
 Transform layers are only available in gyro wallpaper projects:
 
-1. Create or open a **gyro wallpaper** project. **Make sure you have selected `Enable Gyro (Parallax Effect)` when creating the project**
+1. Create or open a **gyro wallpaper** project. **`Make sure you have selected Enable Gyro (Parallax Effect) when creating the project`**
 2. Select the FLOATING layer or the BACKGROUND layer. Gyro wallpapers don't use seperate files for background and floating, instead they use a single file for both.
-3. Click **Add Layer** in the Layers Panel. 
+3. Click **Add Layer** in the Layers Panel.
 4. Select **Transform Layer**
 5. A new transform layer will be added to your project. The transform layer will be added into the FLOATING or the BACKGROUND layer, depending on which one you selected. **Make sure you read the next section!**
+
 <Info>
-Editing Covered Layers: Since the FLOATING layer in a gyro wallpaper covers the BACKGROUND layer, you might find it difficult to select and edit background elements on the canvas. To work around this, you can temporarily hide the FLOATING layer by clicking the eye icon next to it in the Layers Panel. This will allow you to easily access and edit the BACKGROUND layer.
-  </Info>
+  Editing Covered Layers: Since the FLOATING layer in a gyro wallpaper covers the BACKGROUND layer, you might find it difficult to select and edit background elements on the canvas. To work around this, you can temporarily hide the FLOATING layer by clicking the eye icon next to it in the Layers Panel. This will allow you to easily access and edit the BACKGROUND layer.
+</Info>
 
 ### Adding Sublayers to Your Transform Layer
 
@@ -63,6 +65,7 @@ Editing Covered Layers: Since the FLOATING layer in a gyro wallpaper covers the 
 When you create a transform layer, you can configure how it responds to device tilt:
 
 **Gyro Dictionaries** define the relationship between device tilt and layer properties:
+
 - **Axis**: Which tilt direction to respond to (X for left/right, Y for up/down)
 - **Key Path**: Which property to animate (position or rotation)
 - **Map Min/Max**: The range of values for the animation
@@ -78,6 +81,7 @@ Transform Layer (responds to tilt)
 ```
 
 When you tilt your device:
+
 - The text layer is on the background image
 - The text layer moves together with the background image when you tilt your device
 
@@ -89,34 +93,42 @@ When you tilt your device:
 
 1. Select a transform layer
 2. Click on the **Gyro** tab in the Inspector Panel
-3. Click **+ Add Dictionary** to create a new gyro effect
+3. Click **\+ Add Dictionary** to create a new gyro effect
 
 ### Gyro Dictionary Settings
 
 Each dictionary controls one aspect of the gyro response:
 
 #### Title
+
 A descriptive name for this gyro effect (e.g., "Horizontal Shift", "Tilt Rotation"). This doesn't matter, it is just for you to keep track of what the dictionary does.
 
 #### Axis
+
 Choose which device tilt direction triggers this effect:
+
 - **X (Left/Right)**: Responds when you tilt the device left or right
 - **Y (Up/Down)**: Responds when you tilt the device up or down
 
 #### Key Path
+
 Select which property to animate:
+
 - **position.x**: Move horizontally
 - **position.y**: Move vertically
 - **transform.rotation.x**: Rotate around the X-axis (pitch)
 - **transform.rotation.y**: Rotate around the Y-axis (yaw)
 
 #### Map Min To / Map Max To
+
 Define the range of motion:
-- **For position**: Values in pixels (e.g., -50 to 50 means 50px movement in each direction)
-- **For rotation**: Values in radians (e.g., -0.5 to 0.5 for subtle rotation)
+
+- **For position**: Values in pixels. The min max values set the range the layer can move when you tilt your phone. (e.g., -50 to 50 means tilting your phone to the very left will make the layer go to the position-50, and tilting your phone to the very right will make the layer go to the position 50.)
+- **For rotation**: Values in radians. The min max values set the range the layer can rotate when you tilt your phone. (e.g., -0.5 to 0.5 for subtle rotation)
 
 <Info>
-Tips and Info:
+  Tips and Info:
+
   - You can add up to 10 gyro dictionaries per transform layer, allowing you to combine multiple effects (e.g., both horizontal movement and rotation).
   - One radian is 57.2958 degrees.
 </Info>
@@ -153,6 +165,7 @@ Transform layers are only available for gyro wallpaper projects. Make sure you'r
 ### "The gyro effect isn't working"
 
 **Check these:**
+
 - Have you added at least one gyro dictionary?
 - Are the Map Min/Max values large enough to see movement?
 - Have you added sublayers to the transform layer?
