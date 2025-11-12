@@ -32,6 +32,8 @@
               "editor/interface-overview",
               "editor/creating-layers",
               "editor/editing-layers",
+              "editor/blending-modes",
+              "editor/filters",
               "editor/layer-hierarchy",
               "editor/creating-animations",
               "editor/creating-state-transitions",
@@ -47,6 +49,7 @@
               "layers/gradient-layers",
               "layers/video-layers",
               "layers/emitter-layers",
+              "layers/replicator-layers",
               "layers/transform-layers"
             ]
           },

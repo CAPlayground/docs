@@ -1,0 +1,39 @@
+---
+title: "Replicator Layers"
+description: "Front-end controls for creating repeated instances of a layer."
+---
+
+Replicator layers duplicate a source layer into multiple instances and apply offsets between each instance.
+
+## Creating a Replicator Layer
+
+1. Click Add Layer
+2. Select Replicator Layer
+
+---
+
+## Inspector: Replicator Tab
+
+The Replicator tab exposes these properties:
+
+- **Instance Count**
+  Number of total instances, including the original. Integer >= 1.
+
+- **Instance Translation**
+  Per-instance offset in pixels applied cumulatively.
+  - X
+  - Y
+  - Z
+
+- **Instance Rotation**
+  Per-instance rotation offset around the Z axis, in degrees.
+
+- **Instance Delay**
+  Delay in seconds between instances for animations. Floating-point, >= 0.
+
+---
+
+## Notes
+
+- Replicator applies the offsets for each successive instance. Small values can create evenly spaced grids or circular arrays when combined with rotation.
+- All properties are edited from the Inspector and support direct numeric input and Enter-to-commit, matching the UI behaviour.
