@@ -3,210 +3,103 @@ title: "Emitter Layers"
 description: "Complete guide to creating particle effects with emitter layers in CAPlayground."
 ---
 
-Emitter layers create particle effects like snow, rain, sparkles, confetti, and more using Core Animation's particle system.
+Emitter layers (CAEmitterLayer) create complex particle effects like snow, rain, sparkles, and confetti. They work by emitting many small visual elements called particles based on the rules you define.
 
 ## Creating an Emitter Layer
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Emitter Layer**
-3. A new emitter layer will appear with default settings, without any cells
-
-<Info>
-  Emitter layers are **advanced**. Start with simple effects and experiment to learn how they work!
-</Info>
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Emitter Layer**.
+3. A new emitter layer will appear on your canvas. Initially, it will be empty until you add **Emitter Cells**.
 
 ---
 
-## Understanding Emitter Layers
+## Emitter Properties
 
-### What Are Emitter Layers?
-
-Emitter layers generate and animate particles (small visual elements) continuously:
-
-- **Emitter layer**: The layer that holds the emitter cells
-- **Emitter Cells**: The particles (what particles look like and how they behave)
-- **Particles**: The individual visual elements that are created and animated
-
-**Example:** A snow effect has:
-- Emitter layer the same size as the Root Layer
-- Emitter cell defining snowflake appearance and falling behavior (geometryFlipped)
-- Hundreds of snowflake particles falling down:
-  - Birth rate of 10, lifetime of 5 seconds, velocity of 200, emission range of 200, spin of 20, X acceleration of 100, Y acceleration of 200.
-
-<Info>
-Download the .tendies for this effect [here](https://caplayground.pages.dev/wallpapers?id=3827285)
-</Info>
-
----
-
-## Emitter Layer Properties
+These properties control the overall behavior of the particle system and are found in the **Emitter** tab.
 
 ### Emitter Position
-
-The location where particles are created:
-
-- **Emitter Position (X, Y)**: Coordinates relative to the layer
-- Default: Bottom left corner (or top left if geometryFlipped is enabled)
-- Can be different from the layer's position
-
-**To adjust:**
-1. Select the emitter layer
-2. In the **Emitter** tab, find **Emitter Position**
-3. Enter X and Y coordinates
+The specific point where particles are created relative to the layer's bounds.
+1. Find **Emitter Position** in the Emitter tab.
+2. Adjust the X and Y coordinates to move the "mouth" of the emitter.
 
 ### Emitter Size
-
-The area from which particles are emitted:
-
-- **Emitter Size (W, H)**: Width and height of the emission area
-- Larger size = particles spread across a wider area
+The dimensions of the emission area. A larger size spreads particles over a wider area.
 
 ### Emitter Shape
-
 The shape of the emission area:
-
-**Available shapes:**
-- **Point**: Particles emit from a single point
-- **Line**: Particles emit along a line
-- **Rectangle**: Particles emit from a rectangular area
-
-**To set:**
-1. In the **Emitters** tab, find **Shape**
-2. Select from the dropdown
+- **Point**: Emit from a single dot.
+- **Line**: Emit along a horizontal or vertical line.
+- **Rectangle**: Emit from a rectangular area.
 
 ### Emitter Mode
-
-Controls how particles are distributed within the shape:
-
-**Volume:**
-- Particles emit from anywhere within the shape
-- Best for area effects (rain, snow)
-
-**Outline:**
-- Particles emit from the edge/perimeter of the shape
-- Best for borders and outlines
-
-**Surface:**
-- Particles emit from the surface
+Controls how particles populate the chosen shape:
+- **Volume**: Particles appear anywhere inside the shape.
+- **Outline**: Particles appear only on the edges of the shape.
+- **Surface**: Particles appear on the surface area.
 
 ### Render Mode
-
-Controls how particles are drawn:
-
-**Unordered (default):**
-- Particles are drawn in creation order
-- Standard rendering
-
-**Additive:**
-- Particles blend additively (colors add together)
-- Creates glowing, bright effects
-- Great for sparkles, fire, magic effects
+Controls how particles are drawn relative to each other:
+- **Unordered**: Standard drawing.
+- **Additive**: Particles glow when they overlap (excellent for fire or magic effects).
 
 ---
 
 ## Emitter Cells
 
-Emitter cells define what particles look like and how they behave.
+Emitter cells define the appearance and behavior of the individual particles. You can add multiple cells to one emitter for complex effects (e.g., mixing rain and lightning).
 
-### Adding Emitter Cells
+### Adding a Cell
+1. Select the Emitter layer.
+2. In the **Emitter** tab, find the **Emitter Cells** section.
+3. Click **+ Add Cell**.
+4. Configure the cell properties in the expanded menu.
 
-1. Select the emitter layer
-2. In the **Emitter** tab, find **Emitter Cells**
-3. Click **+ Add Cell**
-4. Configure the cell properties
-
-<Info>
-  You can have multiple emitter cells in one emitter layer to create complex effects!
-</Info>
-
-### Removing Emitter Cells
-
-1. Find the cell you want to remove
-2. Click the red **Remove** button
-
-### Emitter Cell Properties
-
-Each emitter cell has the following properties:
-
-- **Birth Rate**: How many particles per second (e.g., 10, 50, 100)
-- **Lifetime**: How long each particle lives (in seconds)
-- **Velocity**: Initial speed of particles
-- **Scale**: Size of the particle (e.g., 0.10 = 10% of original size, 1 = original size)
-- **Scale Range**: Random variance applied to scale for each particle
-- **Scale Speed**: Continuous rate of scale change over particle lifetime
-- **Emission Range**: Spread of emission angles (in degrees)
-- **Emission Longitude**: Direction angle on the Z axis
-- **Emission Latitude**: Direction angle on the X/Y axes
-- **Spin**: Rotation speed (degrees per second)
-- **Spin Range**: Random variance applied to spin
-- **X Acceleration**: Horizontal force applied to particles
-- **Y Acceleration**: Vertical force applied to particles
-- **Alpha Range**: Random variance to particle opacity
-- **Alpha Speed**: Continuous rate of opacity change over lifetime
+### Cell Properties
+- **Birth Rate**: How many particles are created per second.
+- **Lifetime**: How long each particle stays on screen (in seconds).
+- **Velocity**: The speed at which particles are launched.
+- **Scale**: The initial size of each particle.
+- **Scale Range/Speed**: Randomness in size and how fast they grow or shrink.
+- **Emission Range**: The angle (in degrees) at which particles are spread.
+- **Spin**: How fast particles rotate as they move.
+- **Acceleration (X/Y)**: Constant force applied to particles (useful for gravity or wind).
+- **Alpha Speed**: How fast particles fade out over their lifetime.
 
 ---
 
 ## Common Properties
 
-Emitter layers support standard layer properties:
+Emitter layers also support standard properties in the **Geometry** and **Compositing** tabs.
 
-### Position and Bounds
+### Geometry
+- **Position (X, Y)**: Move the entire emitter container.
+- **Bounds (W, H)**: The overall size of the emitter layer.
+- **Rotation**: Rotate the entire particle effect.
 
-- **Position (X, Y)**: Location of the emitter layer on the canvas
-- **Bounds (W, H)**: Bounds of the emitter layer
-
-### Opacity
-
-- **Opacity**: 0% (invisible) to 100% (fully opaque)
-- Affects all particles from this emitter
+### Compositing
+- **Opacity**: Fade all particles at once.
+- **Hidden**: Toggle the entire effect on or off.
 
 ---
 
 ## Troubleshooting
 
 ### "I don't see any particles"
-
 **Check:**
-- Is **Birth Rate** > 0?
-- Is **Lifetime** > 0?
-- Is the emitter layer visible?
-- Are particles being created outside the visible area?
+- Did you add an **Emitter Cell**?
+- Is the **Birth Rate** greater than 0?
+- Is the **Lifetime** greater than 0?
+- Is the emitter layer hidden or at 0% opacity?
 
-### "Too many/too few particles"
+### "The particles move the wrong way"
+**Solution:**
+- Check the **Velocity** and **Acceleration** values.
+- Adjust the **Emission Longitude** (direction) or **Emission Range**.
 
-**Adjust:**
-- **Birth Rate**: Higher = more particles
-- **Lifetime**: Longer = more particles on screen at once
-
-### "Particles move too fast/slow"
-
-**Adjust:**
-- **Velocity**: Higher = faster
-- **Acceleration**: Adds continuous force
-
-### "Performance is poor"
-
-**Solutions:**
-- Reduce **Birth Rate**
-- Reduce **Lifetime**
-- Remove extra emitter cells
-- Simplify particle images
-- Test on device to measure actual performance, as browser performance is not representative of device performance.
-
-### "Particles don't look right"
-
-**Check:**
-- **Render Mode**: Try Additive for glowing effects
-- **Scale**: Adjust particle size
-- **Emitter Shape and Size**: Ensure particles emit from the right area
-
----
-
-## Performance Warning
-
-<Warning>
-  Emitter layers can be resource-intensive, especially with high birth rates or long lifetimes. Always test on your actual device to ensure acceptable performance.
-</Warning>
+### "Performance is slow"
+**Solution:**
+- Reduce the **Birth Rate** or **Lifetime**. Too many particles on screen at once can impact performance.
+- Test on a real device to see actual performance.
 
 ---
 
@@ -214,15 +107,15 @@ Emitter layers support standard layer properties:
 
 <CardGroup cols={2}>
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Combine emitters with animations
+    Animate the emitter's position
   </Card>
   <Card title="Video Layers" icon="video" href="/layers/video-layers">
-    Another way to add motion
+    Use GIFs for complex animations
   </Card>
   <Card title="Export Your Project" icon="download" href="/editor/export-your-project">
-    Test your emitter on your device
+    Test your effect on device
   </Card>
   <Card title="State Transitions" icon="arrows-left-right" href="/editor/creating-state-transitions">
-    Change emitter properties between states
+    Change effects between states
   </Card>
 </CardGroup>

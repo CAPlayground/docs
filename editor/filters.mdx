@@ -3,40 +3,38 @@ title: "Filters"
 description: "Front-end Filters tab for per-layer post-processing."
 ---
 
-Filters let you apply post-processing effects to any layer from the Inspector.
+Filters allow you to apply real-time post-processing effects to any layer. Unlike the permanent editing tools (like the image crop or blur), filters are **non-destructive**—you can change their values at any time without affecting the original asset.
 
-## Filters Tab
 
-- **Add filter**
-  Opens a dropdown to add a new filter. Multiple filters and duplicates are supported.
+## Using Filters
 
-- **Enable/disable**
-  Toggle a filter on or off without removing it.
+1. Select any layer on the canvas.
+2. Open the **Filters** tab in the Inspector panel.
+3. Click **Add Filter** and choose an effect from the dropdown.
+4. Adjust the **Value** slider to change the intensity of the effect.
 
-- **Remove**
-  Deletes the selected filter from the layer.
+---
 
-- **Value**
-  Numeric control whose label depends on the filter type.
+## Supported Filter Types
 
-## Supported Filters
+| Filter | Description | Value Unit |
+| :--- | :--- | :--- |
+| **Gaussian Blur** | Blurs the layer evenly in all directions. | Radius (px) |
+| **Hue Rotate** | Shifts the colors of the layer along the color wheel. | Angle (deg) |
+| **Saturate** | Increases or decreases color intensity. | Multiplier |
+| **Contrast** | Adjusts the difference between light and dark areas. | Multiplier |
+| **Sepia** | Applies a warm, antique brown tone. | Intensity (0-1) |
+| **Invert** | Flips all colors to their opposites (negative effect). | Toggle |
 
-These match the UI options and their value labels:
+---
 
-- Gaussian Blur — Radius
-- Contrast — Amount
-- Hue Rotate — Angle
-- Invert
-- Saturate — Amount
-- Sepia — Intensity
+## Managing Filters
 
-## Where to find it
+- **Order Matters**: Filters are applied from top to bottom. A "Hue Rotate" applied after a "Sepia" will look different than if the order were reversed.
+- **Toggle Visibility**: Click the checkbox next to a filter's name to temporarily disable it.
+- **Multiple Filters**: You can add the same filter multiple times to stack effects.
+- **Delete**: Click the trash icon to remove a filter entirely.
 
-- Select any layer
-- Open the Filters tab in the Inspector
-- Use the Add filter dropdown to insert effects
-
-## Notes
-
-- Filters are applied in the order they appear.
-- You can add the same filter multiple times with different values.
+<Warning>
+  **Performance Note:** Adding many complex filters (especially Gaussian Blur) to multiple layers can impact performance on older devices. Use them where necessary, but avoid overusing them on large, high-resolution layers.
+</Warning>

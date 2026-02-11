@@ -1,0 +1,103 @@
+---
+title: "Your First Wallpaper"
+description: "A step-by-step tutorial to create an animated, multi-state recursive square wallpaper."
+---
+
+In this tutorial, you will build a sophisticated animated wallpaper featuring five nested, rotating squares that react to your device's state (Locked, Unlock, and Sleep).
+
+## What You'll Create
+
+You will build a "Recursive Orbit" wallpaper:
+- **5 Nested Squares**: Different sizes and colors.
+- **Continuous Rotation**: Each square spins at its own offset.
+- **Dynamic States**: The squares scale up when unlocked and slide to the top during sleep.
+
+---
+
+## Step 1: Project Setup
+
+1. Open [CAPlayground](https://caplayground.pages.dev/).
+2. Click **New Project** and name it "Recursive Orbit".
+3. Choose your device's screen size (e.g., iPhone 15 Pro).
+
+---
+
+## Step 2: Set the Background
+
+Modern wallpapers often use a solid background to let the animations pop.
+1. In the **Layers Panel** (left), select the **Background** CA from the dropdown next to the project name.
+2. Click **+ Add Layer** → **Basic Layer**.
+3. In the **Inspector > Geometry** tab, set the size to match your canvas (e.g., `Width: 390`, `Height: 844`).
+4. In the **Inspector > Content** tab, set the **Background Color** to black (`#000000`).
+
+---
+
+## Step 3: Create the Nested Squares
+
+Switch back to the **Floating** CA (where your interactive art lives) by using the dropdown next to the project name.
+
+Create 5 **Basic Layers** with the following properties:
+
+| Name | Size (W/H) | Color | Corner Radius |
+| :--- | :--- | :--- | :--- |
+| Shape 1 | 250 | Red (`#FF0000`) | 50 |
+| Shape 2 | 200 | Orange-Red (`#FF4000`) | 40 |
+| Shape 3 | 150 | Orange (`#FF8000`) | 30 |
+| Shape 4 | 100 | Gold (`#FFC000`) | 20 |
+| Shape 5 | 50 | Yellow (`#FFFF00`) | 10 |
+
+**Pro Tip:** Center all squares on the canvas. Use the alignment tools or set `Position X: 195`, `Position Y: 422`.
+
+---
+
+## Step 4: Add the Rotation Animation
+
+We want each square to rotate continuously. Repeat these steps for **each** of the 5 layers:
+
+1. Select the layer.
+2. Go to the **Animations** tab in the Inspector.
+3. Toggle **Enable animation** to ON.
+4. Set **Key Path** to `transform.rotation.z`.
+5. Set **Duration (s)** to `1`.
+6. Set **Loop Infinitely** to ON.
+7. Add two **Key Values** using the table below as your **first value** (the second value should always be `0`):
+
+| Layer | Start Value (Degrees) | End Value |
+| :--- | :--- | :--- |
+| Shape 1 | 90° | 0° |
+| Shape 2 | 180° | 0° |
+| Shape 3 | 270° | 0° |
+| Shape 4 | 360° | 0° |
+| Shape 5 | 450° | 0° |
+
+<Info>
+  Setting different start values ensures the squares are offset from each other as they spin!
+</Info>
+
+---
+
+## Step 5: Configure State Transitions
+
+Now, let's make the wallpaper dynamic based on what you are doing with your phone.
+
+### 1. The Unlock State (Slight Scale Up)
+1. In the **States Panel** (bottom-left), select **Unlock**.
+2. For each square, increase its size by 20% (e.g., Change Shape 1 from `250` to `300`).
+
+### 2. The Sleep State (Top Slide)
+1. Select the **Sleep** state in the States Panel.
+2. Move all 5 squares toward the top of the screen.
+3. Set their **Position Y** values in a sequence (e.g., `125`, `150`, `175`, `200`, `225`).
+
+---
+
+## Step 6: Preview and Export
+
+1. Click the **Phone Icon** in the bottom-left of the canvas to enter **Device Preview**.
+2. Swipe up and down to see the squares scale and slide.
+3. Click the side button to test the **Sleep** state.
+4. If everything looks good, click **Export** and download the **.tendies** file.
+
+<Success>
+  **You're done!** You've just built a professional-grade recursive animation with state-aware transitions. 🎉
+</Success>

@@ -24,7 +24,7 @@ The new layer will be created and added to your layer list.
 - **At the center** of your canvas
 
 <Info>
-  Layers higher in the list appear **in front of** layers lower in the list. Think of it like stacking papers on a desk.
+  Layers higher in the list appear **behind** layers lower in the list. The editor renders them in order, so each new layer in the list is painted on top of the previous one.
 </Info>
 
 ### Creating Sublayers (a layer inside another layer)
@@ -43,7 +43,7 @@ To create a layer as a **sublayer** inside a layer:
 
 ## Available Layer Types
 
-CAPlayground supports seven types of layers, each with unique capabilities:
+CAPlayground supports nine types of layers, each with unique capabilities:
 
 ### Text Layer
 
@@ -104,7 +104,7 @@ A layer that displays smooth color gradients.
 
 ### Image Layer
 
-A layer that displays an image from your computer.
+A layer that displays an image from your computer or a web link.
 
 **Best for:**
 - Photos and illustrations
@@ -112,15 +112,14 @@ A layer that displays an image from your computer.
 - Textures and patterns
 
 **Key features:**
-- Supports PNG, JPEG, WebP, BMP, SVG
+- Supports PNG, JPEG, SVG
 - Multiple fit modes (cover, contain, fill, none)
-- Drag and drop support
-- Multiple image upload
+- Drag and drop & Link Import support
+- SVG automatic PNG conversion
 
 **How to create:**
-1. Click **Add Layer** → **Image Layer…**
-2. Select one or more image files from your computer
-3. Each image will be added as a separate layer
+1. Click **Add Layer** → **Image Layer…** (to upload) or **Import from Link**.
+2. Select your file or paste a URL.
 
 <Info>
   You can drag and drop images directly onto the canvas to create image layers quickly!
@@ -141,23 +140,18 @@ A layer that displays an animated video or GIF.
 
 **Key features:**
 - Supports video files and GIFs
-- Maximum 30 fps
-- Maximum 12 seconds duration
-- Auto-reverse option
-- Frame-based animation
+- Maximum 30 fps recommended
+- Maximum 12 seconds duration recommended
+- Auto-reverse and Loop options
 
 **How to create:**
-1. Click **Add Layer** → **Video Layer…**
-2. Select a video file or GIF from your computer
-3. The video will be processed and added to your project
+1. Click **Add Layer** → **Video Layer…** or **Import from Link**.
+2. Select a file or paste a URL.
+3. The video will be processed and added to your project.
 
 <Warning>
-  Video layers can be very resource-intensive when applied as a wallpaper. Use them sparingly for best performance on your device.
+  Video layers are very resource-intensive. Use them sparingly for best performance.
 </Warning>
-
-<Info>
-  GIF files must be imported as Video Layers, not Image Layers. CAPlayground will remind you if you try to upload a GIF as an image.
-</Info>
 
 [Learn more about Video Layers →](/layers/video-layers)
 
@@ -170,50 +164,67 @@ A layer that creates particle effects like snow, rain, sparkles, and more.
 **Best for:**
 - Particle effects
 - Animated backgrounds
-- Special effects
+- Environmental atmosphere
 
 **Key features:**
 - Multiple emitter shapes (point, line, rectangle, circle, etc.)
 - Customizable particles (emitter cells)
 - Particle properties (velocity, lifetime, scale, rotation, etc.)
-- Render modes (unordered, additive)
-
-**How to create:**
-1. Click **Add Layer** → **Emitter Layer**
-2. Configure the emitter properties in the Inspector
-3. Add and customize emitter cells (particles)
-
-<Tip>
-  Emitter layers are advanced! Start with simple effects and experiment to learn how they work.
-</Tip>
 
 [Learn more about Emitter Layers →](/layers/emitter-layers)
 
 ---
 
-### Transform Layer (CATransformLayer)
+### Replicator Layer
 
-A special container layer for gyro wallpapers that makes sublayers respond to device tilt.
+A layer that duplicates a single "source" layer into many copies with offsets in position, rotation, and scale.
 
-**For:**
-- Gyro wallpapers with parallax effects
-- Device tilt-responsive designs
+**Best for:**
+- Creating grids of items
+- Circular patterns
+- Complex geometric designs
 
 **Key features:**
-- Responds to device gyroscope (tilting your device can move or rotate the layer.)
-- Configurable tilt response (axis, property, range)
+- Instance count and delay
+- Translation, rotation, and scale offsets per instance
+- Automatic layout updates
 
-**How to create:**
-1. Create or open a **gyro wallpaper** project
-2. Click **Add Layer** → **Transform Layer**
-3. Add sublayers to the transform layer
-4. Configure gyro effects in the **Gyro** tab of the Transform Layer.
+[Learn more about Replicator Layers →](/layers/replicator-layers)
+
+---
+
+### Liquid Glass Layer
+
+A layer that creates a realistic glass refraction (distortion) effect on layers behind it.
+
+**Best for:**
+- Frosted glass effects
+- Magnifying lenses
+- Modern "glassmorphism" UI
+
+**Key features:**
+- Distorts any layers positioned behind it
+- Adjustable Strength and Depth
+- Optional Chromatic Aberration (color fringing)
 
 <Warning>
-  Transform Layers are only available in gyro wallpaper projects. They won't appear in the layer menu for regular wallpapers.
+  Liquid Glass only renders in Chromium-based browsers (Chrome, Edge). It will work on your iOS device once exported.
 </Warning>
 
-[Learn more about Transform Layers →](/layers/transform-layers)
+[Learn more about Liquid Glass Layers →](/layers/liquid-glass-layers)
+
+---
+
+### Transform Layer (CATransformLayer)
+
+A special container layer for gyro wallpapers that makes sublayers respond to device tilt and enables 3D depth.
+
+**Best for:**
+- Gyro wallpapers with parallax effects
+- Building 3D objects like cubes
+
+[Learn more about Gyro Effects →](/layers/transform-layers-gyro)  
+[Learn more about 3D Containers →](/layers/transform-layers-3d)
 
 ---
 

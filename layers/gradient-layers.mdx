@@ -3,210 +3,66 @@ title: "Gradient Layers"
 description: "Complete guide to creating and customizing gradient layers in CAPlayground."
 ---
 
-Gradient layers display smooth color transitions between multiple colors, perfect for backgrounds and visual effects.
+Gradient layers (CAGradientLayer) display smooth transitions between multiple colors. They are ideal for backgrounds, lighting effects, and artistic color overlays.
 
 ## Creating a Gradient Layer
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Gradient Layer**
-3. A new gradient layer will appear with default colors
-
----
-
-## Gradient Types
-
-Gradient layers support three gradient types:
-
-### Axial (Linear)
-
-A straight-line gradient from one point to another.
-
-**Best for:**
-- Simple backgrounds
-- Directional lighting effects
-- Top-to-bottom or left-to-right color transitions
-
-**Direction examples:**
-- Top to bottom: Start (0.5, 0) → End (0.5, 1)
-- Left to right: Start (0, 0.5) → End (1, 0.5)
-- Diagonal: Start (0, 0) → End (1, 1)
-
-### Radial
-
-A circular gradient radiating from a center point.
-
-**Best for:**
-- Spotlight effects
-- Vignettes
-- Circular color transitions
-
-**Configuration:**
-- **Start Point**: Center of the gradient
-- **End Point**: Edge of the gradient (determines radius)
-
-### Conic
-
-A gradient that sweeps around a center point (like a color wheel).
-
-**Best for:**
-- Rainbow effects
-- Circular color wheels
-- Unique artistic effects
-
-**Configuration:**
-- **Start Point**: Center of rotation
-- **End Point**: Determines the starting angle
-
----
-
-## Changing Gradient Type
-
-1. Select the gradient layer
-2. Open the **Gradient** tab in the Inspector
-3. Find the **Type** dropdown
-4. Select: Axial (Linear), Radial, or Conic
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Gradient Layer**.
+3. A new gradient layer will appear on your canvas.
 
 ---
 
 ## Gradient Properties
 
-### Start Point and End Point
+These properties are found in the **Gradient** tab of the Inspector Panel.
 
-Control the direction and spread of the gradient:
+### Gradient Type
+- **Axial (Linear)**: A straight-line transition between colors.
+- **Radial**: A circular transition radiating from a center point.
+- **Conic**: A 360-degree "color wheel" sweep around a center point.
 
-**Coordinate system:**
-- Values range from 0% to 100% (sliders in the UI)
-- (0%, 0%) = Top-left corner
-- (100%, 100%) = Bottom-right corner
-- (50%, 50%) = Center
+### Colors Stops
+You can add as many colors as you want to your gradient.
+1. Find the **Colors** section in the Gradient tab.
+2. Click **+ Add Color** to add a new stop.
+3. Click the color indicator of a stop to change its color and transparency.
+4. Click the **X** next to a stop to remove it.
 
-**Common configurations:**
-
-**Axial (Linear):**
-- Vertical: Start (50%, 0%) → End (50%, 100%)
-- Horizontal: Start (0%, 50%) → End (100%, 50%)
-- Diagonal: Start (0%, 0%) → End (100%, 100%)
-
-**Radial:**
-- Centered: Start (50%, 50%) → End (100%, 50%)
-- Off-center: Start (30%, 30%) → End (100%, 50%)
-
-**Conic:**
-- Centered: Start (50%, 50%) → End (50%, 0%)
-<Tip>
-  Experiment with different start and end points to create unique gradient effects!
-</Tip>
-
----
-
-## Color Stops
-
-Color stops define the colors in your gradient and where they appear.
-
-### Adding Colors
-
-1. Select the gradient layer
-2. In the **Gradient** tab, find the **Colors** section
-3. Click **+ Add Color**
-
-### Editing Colors
-
-For each color stop:
-
-**Color:**
-1. Click the color picker
-2. Choose your color using:
-   - Color wheel
-   - Hex code input
-   - RGB sliders
-
-**Opacity:**
-1. Adjust the opacity slider (0% to 100%)
-2. 0% = fully transparent
-3. 100% = fully opaque
-
-<Info>
-  Each color stop has its own opacity, allowing you to create gradients that fade to transparent!
-</Info>
-
-### Removing Colors
-
-1. Find the color stop you want to remove
-2. Click the **X** button next to it
-
-### Color Stop Order
-
-Colors are distributed evenly along the gradient:
-- 2 colors: 0% and 100%
-- 3 colors: 0%, 50%, and 100%
-- 4 colors: 0%, 33%, 66%, and 100%
-- And so on...
-
-<Warning>
-  You must have at least 2 colors for a gradient. If you only have 1 color, the gradient won't display properly.
-</Warning>
+### Start and End Points
+These define the direction and spread of the gradient. 
+- Points are defined as percentages (0% to 100%) of the layer's size.
+- **Start (0%, 0%)** and **End (100%, 100%)** creates a diagonal gradient from top-left to bottom-right.
+- For **Radial** gradients, the distance between the points determines the size of the circle.
 
 ---
 
 ## Common Properties
 
-Gradient layers support all standard layer properties:
+Gradient layers support all standard properties in the **Geometry** and **Compositing** tabs.
 
-### Position and Bounds
+### Geometry
+- **Position (X, Y)**: Location on the canvas.
+- **Bounds (W, H)**: The size of the gradient.
+- **Rotation**: Rotate the entire layer to change the gradient's angle.
 
-- **Position (X, Y)**: Location on the canvas
-- **Bounds (W, H)**: Dimensions of the gradient
-
-
-### Opacity
-
-- **Opacity**: 0% (invisible) to 100% (fully opaque)
-- Affects the entire gradient (multiplied with color stop opacities)
-
-### Rotation
-
-- **Rotation Z**: Rotate the gradient around the Z-axis (degrees)
+### Compositing
+- **Opacity**: Adjust the overall transparency of the gradient.
+- **Corner Radius**: Round the corners of the gradient.
 
 ---
 
 ## Troubleshooting
 
 ### "My gradient isn't showing"
+**Check:**
+- Do you have at least two colors in the **Colors** section?
+- Is the **Opacity** of the layer or the color stops set to 0%?
+- Is the layer hidden?
 
-**Check these:**
-- Do you have at least 2 colors?
-- Are the colors different from each other?
-- Is the layer's opacity > 0?
-- Are the color stop opacities > 0?
-- Is the layer visible?
-- Is the gradient behind other opaque layers?
-
-### "The gradient looks banded (not smooth)"
-
-This can happen with:
-- Very large gradients
-- High-contrast color transitions
-- Device limitations
-
-**Solutions:**
-- Add intermediate color stops for smoother transitions
-- Use closer colors on the color wheel
-- Test on your actual device
-
-### "I can't see the difference between gradient types"
-
-**Tips:**
-- **Axial**: Look for a straight-line transition
-- **Radial**: Look for a circular transition
-- **Conic**: Look for a sweeping, color-wheel effect
-- Try extreme start/end points to see the difference clearly
-
-### "Start/End points aren't working as expected"
-
-Remember:
-- Coordinates are 0% to 100% (not pixels)
-- (0%, 0%) = top-left, (100%, 100%) = bottom-right
-- For radial gradients, the distance between start and end determines the radius
+### "The colors look banded"
+**Solution:**
+- Try adding more color stops with intermediate shades for a smoother transition.
 
 ---
 
@@ -214,15 +70,15 @@ Remember:
 
 <CardGroup cols={2}>
   <Card title="Basic Layers" icon="square" href="/layers/basic-layers">
-    Combine gradients with shapes
+    Mix gradients with solid shapes
   </Card>
   <Card title="Image Layers" icon="image" href="/layers/image-layers">
-    Layer gradients over images
+    Overlay gradients on top of photos
   </Card>
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Animate your gradients
+    Animate gradient colors and points
   </Card>
   <Card title="State Transitions" icon="arrows-left-right" href="/editor/creating-state-transitions">
-    Change gradients between states
+    Transition between different gradients
   </Card>
 </CardGroup>

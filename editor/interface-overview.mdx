@@ -13,6 +13,7 @@ The editor is divided into four main areas:
 - **Canvas** (center): Visual preview of your wallpaper
 - **Inspector Panel** (right): Edit properties of selected layers
 - **States Panel** (bottom left): Manage different device states (locked, unlocked, sleep)
+- **Timeline Panel** (bottom): Visualize and adjust animations over time
 
 ### 1. Layers Panel (Left)
 
@@ -25,7 +26,7 @@ The Layers Panel is where you manage all the layers in your wallpaper.
 - **Drag and drop**: Reorder layers by dragging them
 
 <Info>
-  Transform Layers are only available in gyro wallpaper projects and enable device tilt effects. [Learn more →](/layers/transform-layers)
+  Transform Layers are only available in gyro wallpaper projects and enable device tilt effects. [Learn more →](/layers/transform-layers-gyro)
 </Info>
 
 **Layer Indicators:**
@@ -41,31 +42,29 @@ The Layers Panel is where you manage all the layers in your wallpaper.
 
 ### 2. Canvas (Center)
 
-The Canvas is your visual workspace where you see and interact with your wallpaper.
+The Canvas is your visual workspace. It shows a real-time preview of your wallpaper exactly as it will appear on your device.
 
-**Features:**
-- **Visual preview**: See your wallpaper exactly as it will appear
-- **Direct manipulation**: Click and drag layers to move them
-- **Selection handles**: Resize layers by dragging corner or edge handles
-- **Rotation handles**: Rotate layers using the rotation handle
+**Interacting with Layers:**
+- **Selection**: Click any layer to select it. Clicking the empty canvas background will deselect all layers.
+- **Movement**: Click and drag a layer to move it.
+- **Resizing**: Use the selection handles. Hold **Shift** to lock aspect ratio, or **Alt/Option** to resize from the center.
+- **Rotation**: Drag the rotation handle (the circle above the top-middle edge).
+- **Context Menu**: **Right-click** any layer to quickly Rename, Duplicate, Delete, or reorder it.
 
 **Canvas Controls:**
-- **Zoom**: Hold **Shift** and scroll up or down, or use the + and - buttons in the top right corner of the canvas to zoom in/out
-- **Pan**: Hold **Shift** and drag to pan around the canvas
-- **Grid/Guides**: Snapping helps align layers precisely (configurable in Editor Settings)
-- **Gyro Controls** (gyro wallpapers only): Bottom-left panel to simulate device tilt
+- **Zoom**: 
+    - Hold **Shift** and use your mouse wheel / trackpad.
+    - Use the **+** and **-** buttons in the top right.
+    - Press **Cmd/Ctrl + Plus/Minus**.
+    - Press **Cmd/Ctrl + 0** to fit to screen.
+- **Panning**: Hold **Shift** and drag with your mouse, or use two fingers on a trackpad to move the canvas view.
+- **Snapping**: Layers will automatically snap to the edges of the canvas and to other layers for perfect alignment.
 
-<Info>
-  The canvas shows your wallpaper at your device's actual resolution. What you see is what you get!
-</Info>
-
-**Gyro Controls Panel (Gyro Wallpapers Only):**
-
-When working on a gyro wallpaper, a control panel appears in the bottom-left corner:
-- **Grid/Phone toggle**: Switch between grid view and phone visualization
-- **Grid view**: Drag the knob to simulate device tilt
-- **Phone view**: Drag the 3D phone to see realistic tilt effects
-- **Recenter button**: Reset tilt to neutral position (crosshair icon)
+**Gyro Controls** (Gyro projects only):
+A control panel in the bottom-left allows you to simulate device movement.
+- **Grid View**: Drag the center knob to simulate tilt.
+- **Phone View**: Tilt a virtual 3D phone to see the depth effect.
+- **Recenter**: Reset simulation to the neutral position.
 
 ---
 
@@ -99,20 +98,49 @@ The Inspector Panel shows detailed properties for the selected layer.
 
 ---
 
+---
+
 ### 4. States Panel (Bottom Left)
 
 The States Panel lets you create a different look for your wallpaper when on different device states, like your device being on the lock screen, home screen, or sleep (off).
 
 **Available States:**
-- **Base State**: The default state (just as the default for each state, doesn't exist on device)
-- **Locked**: How the wallpaper looks when your device is on the lock screen
-- **Unlock**: How the wallpaper looks when your device is on the home screen
-- **Sleep**: How the wallpaper looks when your device is off
+- **Base State**: The default state.
+- **Locked**: How the wallpaper looks when your device is on the lock screen.
+- **Unlock**: How the wallpaper looks when your device is on the home screen.
+- **Sleep**: How the wallpaper looks when your device is off.
+
+**Light/Dark States:**
+You can enable **Light/Dark per state** in the States Panel settings (gear icon). This splits the states (e.g., `Locked Light` and `Locked Dark`), allowing you to define different colors and opacities for different iOS appearance modes.
 
 **How It Works:**
-1. Select a state (e.g., "Locked")
-2. Modify layer properties (position, opacity, etc.)
-3. CAPlayground automatically creates smooth transitions between states
+1. Select a state (e.g., "Locked").
+2. Modify layer properties (position, opacity, etc.).
+3. CAPlayground automatically creates smooth transitions between states.
+
+---
+
+### 5. Timeline Panel (Bottom)
+
+The Timeline Panel provides a visual representation of all animations in your project. It appears automatically when a layer has an animation enabled.
+
+**Features:**
+- **Visualize Durations**: See exactly how long each animation lasts.
+- **Scrubbing**: Click and drag on the **Time Ruler** at the top of the timeline to see how your animations look at any specific point.
+- **Playback Controls**: Use the **Play/Pause** and **Restart** buttons to test your animations.
+- **Zooming**: Use the **+** and **-** buttons in the timeline header to change the time scale (zoom in for precision, zoom out for the big picture).
+- **Label Resizing**: Drag the divider between the layer names and the tracks to adjust the width of the label column.
+
+---
+
+### 6. Device Preview (Canvas Shortcut)
+
+Click the **Phone Icon** (bottom-left area of the canvas) to enter **Device Preview** mode. This simulates how your wallpaper will look and behave on a real device.
+
+- **Interactive States**: Swipe up from the bottom to "unlock" the phone, or swipe down from the status bar area to "lock" it.
+- **Depth Effect Toggle**: Test how your layers interact with the lock screen clock.
+- **Theme Toggle**: If you have enabled Light/Dark states, use the **Sun/Moon** toggle to switch appearance modes.
+- **Sleep Simulation**: Click the side button to toggle the Always-On Display (Sleep) state.
 
 ---
 
@@ -128,18 +156,34 @@ The menu bar provides quick access to important functions:
 
 ---
 
-## Customizing the Interface
+## Editor Settings
 
-You can customize the editor to fit your workflow:
+Click the **Settings** (gear icon) in the top menu to customize your environment:
 
-1. **Resize panels**: Drag the edges between panels to resize them
-2. **Collapse panels**: Some panels can be collapsed to give you more canvas space
-3. **Settings**: Open Settings (gear icon) to configure:
-   - Snap to edges
-   - Snap to other layers
-   - Snap threshold
-   - Show anchor points
-   - And more!
+- **UI Modes**:
+    - **Default Mode**: The standard interface with full-sized panels and icons.
+    - **Compact UI**: Toggle this to shrink the interface, giving you more room for the Canvas. Perfect for laptop screens or smaller monitors.
+- **Snapping**: Enable or disable snapping to edges and other layers to help with alignment.
+- **Keyboard Shortcuts**: View and customize shortcuts for various editor actions.
+
+## Keyboard Shortcuts
+
+Master these shortcuts to work faster in the editor:
+
+| Action | Shortcut |
+| :--- | :--- |
+| **Undo** | `Cmd/Ctrl + Z` |
+| **Redo** | `Cmd/Ctrl + Shift + Z` |
+| **Delete Layer** | `Delete` or `Backspace` |
+| **Duplicate Layer** | `Cmd/Ctrl + D` |
+| **Zoom In/Out** | `Cmd/Ctrl + +` / `-` |
+| **Fit to Screen** | `Cmd/Ctrl + 0` |
+| **Bring Forward** | `Cmd/Ctrl + ]` |
+| **Send Backward** | `Cmd/Ctrl + [` |
+| **Bring to Front** | `Cmd/Ctrl + Shift + ]` |
+| **Send to Back** | `Cmd/Ctrl + Shift + [` |
+| **Maintain Aspect Ratio** | Hold `Shift` while resizing |
+| **Resize from Center** | Hold `Alt/Option` while resizing |
 
 ---
 

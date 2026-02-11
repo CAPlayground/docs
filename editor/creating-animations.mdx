@@ -51,9 +51,8 @@ Toggle the **Autoreverse** switch to make your keyframe animation reverse after 
 
 Toggle the **Loop infinitely** switch to control how your animation repeats:
 
-- **When turned ON**: Your animation will repeat forever, going from 1 → 2 → 3 → 4 → 5, then looping again from the first keyframe (1). This works great with **Autoreverse** to create infinitely looping animations that go from 1 → 5 → 1 → 5.
-
-- **When turned OFF**: An input field **Repeat for (s)** will appear below the toggle. Enter the total duration (in seconds) that the animation should play before stopping. For example, if set to 10 seconds, the animation will stop playing after 10 seconds.
+- **When turned ON**: Your animation will repeat forever.
+- **When turned OFF**: An input field **Repeat for (s)** will appear. Enter the total duration the animation should play before stopping.
 
 #### Values
 
@@ -64,13 +63,36 @@ The **Values** section is where you create the keyframes for your animation. The
 - For **transform.rotation** keypaths: You'll see a Degrees input for each keyframe
 
 **To add a keyframe:**
-
 1. Click the **+ Add key value** button
 2. Enter the value(s) for that keyframe in the input field(s)
 3. Repeat to add more keyframes
 
 **To remove a keyframe:**
-
 Click the **Remove** button next to the keyframe you want to delete.
 
-**Important:** You MUST have at least 2 values to see an animation. If you only have one value, there's no next keyframe to transition to, so no animation will occur.
+**Important:** You MUST have at least 2 values to see an animation.
+
+#### Advanced Animation Settings
+
+Expand the **Advanced** section in the Animations tab to access more control:
+
+- **Calculation Mode**: 
+    - **Paced**: Smooth, even movement across all keyframes.
+    - **Discrete**: Instant jumps between keyframes (great for blinking or stop-motion).
+- **Timing Function**: Control the "acceleration" of your animation:
+    - **Linear**: Constant speed.
+    - **Ease In**: Starts slow, then speeds up.
+    - **Ease Out**: Starts fast, then slows down.
+    - **Ease In/Out**: Starts and ends slow.
+- **Key Times**: (Advanced) Manually specify the percentage of duration (0.0 to 1.0) when each keyframe should be reached.
+
+---
+
+## The Timeline
+
+The **Timeline** at the bottom of the editor provides a visual way to manage your animations.
+
+- **Syncing**: Align animations across different layers.
+- **Quick Adjust**: Click and drag the ends of an animation bar in the timeline to change its **Duration** without typing numbers.
+
+---

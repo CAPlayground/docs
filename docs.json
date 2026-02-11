@@ -23,7 +23,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "getting-started/quick-start"
+              "getting-started/quick-start",
+              "getting-started/your-first-wallpaper"
             ]
           },
           {
@@ -37,6 +38,7 @@
               "editor/layer-hierarchy",
               "editor/creating-animations",
               "editor/creating-state-transitions",
+              "editor/wallpaper-submissions",
               "editor/export-your-project"
             ]
           },
@@ -50,7 +52,9 @@
               "layers/video-layers",
               "layers/emitter-layers",
               "layers/replicator-layers",
-              "layers/transform-layers"
+              "layers/liquid-glass-layers",
+              "layers/transform-layers-3d",
+              "layers/transform-layers-gyro"
             ]
           },
           {
@@ -70,7 +74,8 @@
             "group": "Contributing to CAPlayground",
             "pages": [
               "contributing/project-structure",
-              "contributing/contributing"
+              "contributing/contributing",
+              "contributing/technical-reference"
             ]
           }
         ]
@@ -110,15 +115,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

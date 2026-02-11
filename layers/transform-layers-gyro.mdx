@@ -1,0 +1,104 @@
+---
+title: "Transform Layers (Gyro)"
+description: "Complete guide to creating transform layers for gyro wallpapers that respond to device tilt."
+---
+
+Transform layers (also known as `CATransformLayer`) are special container layers used exclusively for gyro wallpapers. They enable your wallpaper to respond to device tilt, creating a parallax effect.
+
+<Info>
+  Transform layers are only available when creating gyro wallpapers. They won't appear in the layer menu for regular wallpapers.
+</Info>
+
+## What is a Transform Layer?
+
+A transform layer is an invisible container that holds other layers and applies 3D transformations to them based on device motion. When you tilt your device, the transform layer's contents move in response, creating a depth effect.
+
+**Key characteristics:**
+
+- Acts as a container for other layers (sublayers).
+- Invisible itself (no visual appearance).
+- Responds to device gyroscope data.
+- Creates parallax and depth effects.
+
+<Tip>
+  Transform layers can also be used to build true 3D objects like cubes. Learn more in the [Transform Layers (3D Containers)](/layers/transform-layers-3d) guide.
+</Tip>
+
+---
+
+## Creating a Transform Layer
+
+Transform layers are only available in gyro wallpaper projects:
+
+1. Create or open a **gyro wallpaper** project. **`Make sure you have selected Enable Gyro (Parallax Effect) when creating the project`**.
+2. Select the **FLOATING** layer or the **BACKGROUND** layer in the Layers Panel. 
+3. Click **Add Layer** and select **Transform Layer**.
+4. The new transform layer will be added inside the layer you selected.
+
+<Info>
+  **Editing Covered Layers:** Since the FLOATING layer in a gyro wallpaper covers the BACKGROUND layer, you might find it difficult to select background elements on the canvas. Temporarily hide the FLOATING layer by clicking the **eye icon** in the Layers Panel to edit the background easily.
+</Info>
+
+### Adding Sublayers to Your Transform Layer
+
+<Warning>
+  **Important:** You must add sublayers inside the transform layer to see any gyro effects. The sublayers are what actually move when you tilt your device!
+</Warning>
+
+**To add layers that respond to gyro:**
+1. Select the transform layer in the Layers list.
+2. Click **Add Layer** and choose any layer type (Text, Image, Basic, etc.).
+3. The new layer will be added as a sublayer inside the transform container.
+
+**Moving existing layers:**
+- **Drag layers** in the Layers Panel into a transform layer to make them respond to gyro.
+- **Drag layers out** of a transform layer to remove gyro effects.
+
+---
+
+## Configuring Gyro Effects
+
+### Accessing the Gyro Tab
+1. Select a transform layer.
+2. Click on the **Gyro** tab in the Inspector Panel.
+3. Click **+ Add Dictionary** to create a new gyro effect.
+
+### Gyro Dictionary Settings
+
+#### Axis
+Choose which device tilt direction triggers this effect:
+- **X (Left/Right)**: Responds when you tilt the device left or right.
+- **Y (Up/Down)**: Responds when you tilt the device up or down.
+
+#### Key Path
+Select which property to animate:
+- **`position.x` / `y`**: Move horizontally or vertically.
+- **`transform.rotation.x`**: Rotate around the X-axis (pitch).
+- **`transform.rotation.y`**: Rotate around the Y-axis (yaw).
+- **`transform.rotation.z`**: Rotate clockwise/counter-clockwise.
+
+#### Map Min To / Map Max To
+- **For position**: Values in pixels. (e.g., `-50` to `50` means the layer moves within a 100px range based on full tilt).
+- **For rotation**: Values in radians. (e.g., `-0.5` to `0.5` for subtle 3D tilting).
+
+---
+
+## Testing Gyro Effects
+
+To test your effects in the editor:
+1. Click the **Phone Icon** (bottom-right of canvas) to enter Device Preview, or use the **Toggle Gyro** button next to it.
+2. Use the **Grid view** to drag a simulation knob, or **Phone view** to tilt a 3D device.
+3. Click the **crosshair icon** to recenter the simulation.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Building in 3D" icon="cube" href="/layers/transform-layers-3d">
+    Learn how to build 3D objects like cubes
+  </Card>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Organize sublayers effectively
+  </Card>
+</CardGroup>

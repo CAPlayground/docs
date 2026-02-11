@@ -3,160 +3,76 @@ title: "Basic Layers"
 description: "Complete guide to creating and customizing basic layers in CAPlayground."
 ---
 
-Basic layers are square layers that can be styled with background colors, borders, and corner radius to create different visual effects.
+Basic layers (CALayer) are the most fundamental building blocks in CAPlayground. They are rectangular areas that can be styled with colors, borders, and rounded corners.
 
 ## Creating a Basic Layer
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Basic Layer**
-3. A new blue rectangle will appear on your canvas
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Basic Layer**.
+3. A new rectangle will be added to your canvas (defaults to a blue square).
 
 ---
 
-## What You Can Create
+## Basic Properties
 
-Basic layers are rectangles, but you can style them to create different shapes:
-
-### Rectangle (Default)
-
-A standard four-sided shape with sharp corners.
-
-### Circle
-
-Create a circle by:
-1. Setting **Width** and **Height** to the same value (e.g., 100x100)
-2. Setting **Corner Radius** to half the width (e.g., 50 for a 100x100 square)
-
-### Rounded Rectangle
-
-Create rounded corners by setting **Corner Radius** to any value less than half the width/height.
-
----
-
-## Layer Properties
+These properties are found in the **Content** and **Compositing** tabs of the Inspector Panel.
 
 ### Background Color
-
-The fill color of the layer:
-
-1. Select the basic layer
-2. In the **Content** tab, find **Background Color**
-3. Click the color picker
-4. Choose your color
-
-<Info>
-  Background Color fills the entire rectangular area of the layer.
-</Info>
+The internal fill color of the layer.
+1. Find **Background Color** in the Content tab.
+2. Click the color indicator to open the color picker.
+3. Choose a solid color.
 
 ### Border
-
-Add an outline around the shape:
-
-**Border Color:**
-1. Find **Border** in the Content tab
-2. Click the color picker
-3. Choose your border color
-
-**Border Width:**
-1. Find **Border Width**
-2. Enter a number (in pixels)
-
-<Info>
-  Set **Border Width** to 0 to remove the border completely.
-</Info>
+Adds an outline around the edge of the layer.
+- **Border Color**: The color of the outline.
+- **Border Width**: The thickness of the outline in pixels. Set to 0 to hide.
 
 ### Corner Radius
-
-Round the corners of the layer:
-
-1. Select a basic layer
-2. Find **Corner Radius** in the Compositing tab
-3. Enter a value (in pixels)
-4. Higher values = rounder corners
+Rounds the corners of the layer.
+1. Find **Corner Radius** in the Compositing tab.
+2. Enter a pixel value (e.g., 10 for subtle rounding, or half the layer's width for a circle).
 
 ---
 
-## Properties Examples
+## Shaping Tips
 
-Basic layers support all standard layer properties, these are some you might use:
+While Basic Layers are rectangular by default, you can use **Corner Radius** to create different shapes:
 
-### Position and Bounds
-
-- **Position (X, Y)**: Location on the canvas (in the Geometry tab)
-- **Bounds (W, H)**: Dimensions of the layer (in the Geometry tab)
-
-### Opacity
-
-- **Opacity**: 0% (invisible) to 100% (fully opaque) (in the Compositing tab)
-- Affects the entire layer including background and border
-
-### Rotation
-
-- **Rotation Z**: Rotate around the Z-axis in degrees (in the Geometry tab)
-- **Rotation X/Y**: 3D rotation effects (advanced)
+- **Circle**: Set Width and Height to the same value, then set Corner Radius to half that value.
+- **Pill**: Create a wide rectangle and set Corner Radius to half the height.
+- **Containers**: Set the Background Color to transparent or Opacity to 0% to use the layer as an invisible folder for other sublayers.
 
 ---
 
-## Tips
+## Common Properties
 
-### Creating Circles
+All layers share these standard properties in the **Geometry** and **Compositing** tabs.
 
-1. Set **Width** and **Height** to the same value (e.g., 100x100)
-2. Set **Corner Radius** to half that value (e.g., 50)
-3. Result: A perfect circle
+### Geometry
+- **Position (X, Y)**: Precise location on the canvas.
+- **Bounds (W, H)**: Precise dimensions of the layer.
+- **Anchor Point**: The pivot point for rotation (X: 0-1, Y: 0-1).
+- **Rotation**: Rotate around X, Y, or Z axes.
 
-### Creating Pill Shapes
-
-1. Create a rectangle (e.g., 200x100)
-2. Set **Corner Radius** to half the height (e.g., 50)
-3. Result: A pill/capsule shape
-
-### Using as Containers
-
-Set **Opacity** to 0% to create an invisible container:
-- The layer becomes invisible but can still hold sublayers
-- Useful for organizing and grouping other layers
-- Move the container to move all sublayers together
-
-<Info>
-  For gyro wallpapers, use **Transform Layers (CATransformLayer)** instead of basic layers as containers. Transform Layers enable device tilt effects. [Learn more →](/layers/transform-layers)
-</Info>
-
-[Learn more about sublayers →](/editor/layer-hierarchy)
-
+### Compositing
+- **Opacity**: Adjust overall transparency from 0% to 100%.
+- **Hidden**: Toggle visibility in the editor and final wallpaper.
+- **Masks to Bounds**: When enabled, any sublayers outside this layer's edges will be hidden (clipped).
 
 ---
 
 ## Troubleshooting
 
-### "My circle isn't perfectly round"
-
-Make sure:
-- **Width** and **Height** are exactly the same value
-- **Corner Radius** is set to half the width/height
+### "My circle is an oval"
+**Check:**
+- Ensure the **Width** and **Height** in the Geometry tab are exactly equal.
 
 ### "I can't see my layer"
-
-**Check these:**
-- Is the **Background Color** different from the canvas background?
-- Is **Opacity** > 0%?
-- Is the layer visible (not hidden)?
-- Is the layer behind other layers?
-- Is the **Bounds** (size) large enough to be visible?
-
-### "Corner radius isn't working"
-
-**Solutions:**
-- Check that **Corner Radius** value is > 0
-- Ensure the radius isn't larger than half the width/height
-- The corner radius is in the **Compositing** tab
-
-### "Border isn't showing"
-
 **Check:**
-- Is **Border Width** > 0?
-- Is the **Border Color** different from the background color?
-- Border settings are in the **Content** tab
+- Is the **Background Color** same as the canvas background?
+- Is **Opacity** set to 0%?
+- Is the **Hidden** toggle enabled?
 
 ---
 
@@ -164,15 +80,15 @@ Make sure:
 
 <CardGroup cols={2}>
   <Card title="Gradient Layers" icon="palette" href="/layers/gradient-layers">
-    Add colorful gradients
-  </Card>
-  <Card title="Text Layers" icon="text" href="/layers/text-layers">
-    Add text to your wallpaper
+    Use multiple colors instead of one
   </Card>
   <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
-    Use basic layers as containers
+    Organize sublayers inside basic layers
   </Card>
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Animate your layers
+    Make your shapes move
+  </Card>
+  <Card title="State Transitions" icon="arrows-left-right" href="/editor/creating-state-transitions">
+    Change colors between states
   </Card>
 </CardGroup>

@@ -1,0 +1,74 @@
+---
+title: "Transform Layers (3D Containers)"
+description: "Complete guide to using transform layers to create 3D objects and manage 3D space."
+---
+
+Transform layers (`CATransformLayer`) are special containers that allow their sublayers to exist in a true 3D space. While regular layers "flatten" their children into a 2D plane, a Transform Layer maintains the relative 3D depth and rotations of everything inside it.
+
+<Info>
+  Transform layers are primarily used for building 3D objects (like cubes) and creating advanced **Gyro Parallax** effects.
+</Info>
+
+---
+
+## 2D vs. 3D Behavior
+
+To understand why you need a Transform Layer, compare how sublayers behave:
+
+| Feature | Standard Layer | Transform Layer |
+| :--- | :--- | :--- |
+| **Flattening** | Flattens all children into the layer's own plane. | Preserves the 3D position of children. |
+| **Depth (Z)** | Sublayers render based on list order (stacking). | Sublayers render based on their actual `zPosition`. |
+| **Perspective** | Children look like flat stickers on a card. | Children tilt and rotate with realistic 3D perspective. |
+
+---
+
+## Building in 3D
+
+You can use a Transform Layer as a "3D Scene" to construct complex objects. For example, to make a **Cube**:
+
+1.  **Add a Transform Layer**: This acts as the "root" of your 3D object.
+2.  **Add Sublayers (Faces)**: Add six Basic Layers inside the Transform Layer.
+3.  **Position the Faces**:
+    *   **Front/Back**: Give them a `zPosition` (e.g., `50` and `-50`).
+    *   **Sides**: Rotate them 90° on the Y-axis (`rotationY = 90`) and move them out.
+    *   **Top/Bottom**: Rotate them 90° on the X-axis (`rotationX = 90`) and move them up/down.
+4.  **Rotate the Container**: Rotate the Transform Layer itself in the **Geometry** tab to see your object from different angles.
+
+<Tip>
+  When building 3D objects, use the **Inspector > Geometry** tab to precisely set `Rotation X`, `Rotation Y`, and `zPosition`.
+</Tip>
+
+---
+
+## Interactions with Gyro
+
+Transform layers are most powerful when combined with device motion. You can map the device's tilt to the rotation of a 3D container to create a realistic depth effect.
+
+[Learn how to configure tilt effects →](/layers/transform-layers-gyro)
+
+---
+
+## Troubleshooting
+
+### "My 3D object looks flat"
+**Check:**
+- Are your layers inside a **Transform Layer**? If they are inside a folder or a Basic Layer, they will be flattened.
+- Did you set a **zPosition** or **Rotation X/Y** on the sublayers?
+
+### "I don't see the Transform Layer option"
+**Check:**
+- Transform layers are specialized for gyro and 3D effects. Ensure your project has **Gyro** enabled in the project settings.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Gyro Config" icon="mobile-screen" href="/layers/transform-layers-gyro">
+    Configure parallax and tilt effects
+  </Card>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Organize layers inside transform containers
+  </Card>
+</CardGroup>

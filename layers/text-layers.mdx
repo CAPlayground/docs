@@ -3,167 +3,74 @@ title: "Text Layers"
 description: "Complete guide to creating and customizing text layers in CAPlayground."
 ---
 
-Text layers display customizable text with support for fonts, colors, alignment, and wrapping.
+Text layers (CATextLayer) display customizable text with support for system fonts, alignments, and wrapping.
 
 ## Creating a Text Layer
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Text Layer**
-3. A new text layer will appear on your canvas with default text
-
----
-
-## Editing Text Content
-
-### Quick Edit (Canvas)
-
-1. **Double-click** the text layer on the canvas
-2. The text will become editable
-3. Type your new text
-4. Click outside or press **Enter** to finish editing, or press **Escape** to cancel.
-
-### Edit via Inspector
-
-1. Select the text layer
-2. Open the **Text** tab in the Inspector Panel
-3. Find the **Text** field
-4. Type or paste your text
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Text Layer**.
+3. A new text layer will appear on your canvas.
 
 ---
 
 ## Text Properties
 
+These properties are found in the **Text** tab of the Inspector Panel.
+
+### Text Content
+1. Double-click the text on the canvas OR select the layer and find the **Text** box in the Text tab.
+2. Type your message.
+3. Press **Enter** to commit or **Escape** to cancel.
+
 ### Font Family
-
-Choose from available system fonts:
-
-1. Select the text layer
-2. In the **Text** tab, find **Font**
-3. Click the dropdown to select a font
-
+1. Find the **Font** dropdown in the Text tab.
+2. Select a font from the list. 
 <Info>
-  You may have browser extensions or other software that makes the text render as a different font in the canvas. The canvas uses CSS to render the text, so the font you see in the canvas may not be the same as the font you selected.
+  The canvas uses your browser's fonts. The final wallpaper will use the fonts available on your iOS device.
 </Info>
 
 ### Font Size
-
-Control the size of your text:
-
-1. Find **Font Size** in the Text tab
-2. Enter a number (in px)
-3. Typical sizes: 12-16 (small), 24-36 (medium), 48-72 (large), 100+ (headlines)
-
-**Tips:**
-- Larger sizes work better for wallpapers (viewed from a distance)
-- Test readability on your actual device
+1. Find **Font Size** in the Text tab.
+2. Enter a pixel value. For headlines, try 48-72. For small labels, try 14-18.
 
 ### Text Color
+1. Find **Color** in the Text tab.
+2. Click the color picker to set the text's appearance.
 
-Set the color of your text:
-
-1. Find **Color** in the Text tab
-2. Click the color picker
-3. Choose a color using:
-   - Color wheel
-   - Hex code input
-   - RGB sliders
-   - Other options
-
-**Contrast matters:**
-- Light text on dark backgrounds
-- Dark text on light backgrounds
-- Test visibility in different lighting conditions
-
-### Text Alignment
-
-Align text horizontally within its bounds:
-
-**Options:**
-- **Left**: Text aligns to the left edge
-- **Center**: Text centers horizontally
-- **Right**: Text aligns to the right edge
-- **Justified**: Text spreads to fill the width (except last line)
-
-**To set alignment:**
-1. Select the text layer
-2. Find **Align** in the Text tab
-3. Choose your alignment option
-
-### Text Wrapping
-
-Control whether text wraps to multiple lines:
-
-**Options:**
-- **Wrapped**: Text wraps within the layer's width
-- **No Wrap**: Text stays on one line, extending beyond bounds if needed
-
-**To enable wrapping:**
-1. Find **Wrapped** in the Text tab
-2. Toggle to **on** or **off**
-
-<Info>
-  When wrapping is enabled, make sure your layer's width is wide enough to accommodate your text.
-</Info>
+### Alignment & Wrapping
+- **Align**: Choose Left, Center, Right, or Justified.
+- **Wrapped**: When enabled, text will automatically move to a new line if it hits the edge of the layer's width.
 
 ---
 
 ## Common Properties
 
-Text layers also support all standard layer properties:
+Text layers support all standard properties in the **Geometry** and **Compositing** tabs.
 
-### Position and Bounds
+### Geometry
+- **Position (X, Y)**: Location on the canvas.
+- **Bounds (W, H)**: The size of the text box. If **Wrapped** is on, the Width determines where lines break.
+- **Rotation**: Rotate your text in 2D or 3D.
 
-- **Position (X, Y)**: Location on the canvas
-- **Bounds (W, H)**: Bounds of the text layer
+### Compositing
+- **Opacity**: Fade your text from 0% to 100%.
+- **Hidden**: Toggle visibility.
 
-<Tip>
-  For wrapped text, set the width to your desired text column width. The height will determine how much text is visible.
-</Tip>
-
-### Opacity
-
-- **Opacity**: Use the slider on the **Compositing** tab to adjust the opacity of the text layer
-- Useful for fade-in/fade-out effects with animations
-
-### Rotation
-
-- **Rotation Z**: Rotate text around the Z-axis (degrees)
-- **Rotation X/Y**: 3D rotation effects (advanced)
-
-### Layout
-
-**Use alignment:**
-- Center-align for headlines and titles
-- Left-align for body text and lists
-- Right-align sparingly (for special effects)
-
-**Consider wrapping:**
-- Enable wrapping for multi-line text
-- Disable wrapping for single-line labels
-- Set appropriate layer width when wrapping
+---
 
 ## Troubleshooting
 
 ### "My text is cut off"
-
 **Solutions:**
-- Increase the layer's **width** (if wrapping is enabled)
-- Increase the layer's **height** (if text is multi-line)
-- Reduce the **font size**
-- Disable **wrapping** to allow text to extend beyond bounds
+- Increase the layer's **Width** or **Height** in the Geometry tab.
+- Reduce the **Font Size**.
+- Toggle **Wrapped** off if you want it all on one line.
 
 ### "I can't see my text"
-
-**Check these:**
-- Is the text color different from the background?
-- Is the opacity > 0%?
-- Is the layer visible?
-- Is the text layer behind other layers?
-- Is there actually text in the layer?
-
-### "The font looks different on my device"
-
-Different devices may render fonts slightly differently. Test on your actual device to ensure it looks as expected.
+**Check:**
+- Is the text color the same as the background?
+- Is the **Opacity** set to 0%?
+- Is there actually text typed into the **Text** property?
 
 ---
 
@@ -171,15 +78,15 @@ Different devices may render fonts slightly differently. Test on your actual dev
 
 <CardGroup cols={2}>
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Animate your text layers
+    Fade text in and out
   </Card>
   <Card title="Basic Layers" icon="square" href="/layers/basic-layers">
-    Add shapes behind your text
+    Put shapes behind your text
   </Card>
-  <Card title="Editing Layers" icon="pen" href="/editor/editing-layers">
-    Master all layer properties
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Mask text with other layers
   </Card>
   <Card title="State Transitions" icon="arrows-left-right" href="/editor/creating-state-transitions">
-    Make text change between states
+    Change text between states
   </Card>
 </CardGroup>

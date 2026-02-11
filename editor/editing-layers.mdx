@@ -27,9 +27,10 @@ The **Inspector panel** on the right side shows all editable properties for the 
 - **Content**: Background color, background opacity, border color, border width
 - **Animations**: Keyframe animation settings
 - **Gyro**: Configure device tilt effects (Transform Layers only)
+- **Filters**: Non-destructive effects like Blur, Contrast, and Hue Rotate
 
 <Info>
-  Each tab is specific to the layer type. For example, Image layers have an **Image** tab, and Transform Layers have a **Gyro** tab for configuring tilt effects.
+  Each tab is specific to the layer type. For example, Image layers have an **Image** tab with specialized tools like **Crop** and **Blur**, while Emitter layers have an **Emitter** tab for configuring particles.
 </Info>
 
 **Common Properties:**
@@ -83,7 +84,7 @@ The Position X and Position Y values in the Inspector will update automatically 
 
 The Bounds Width and Bounds Height values in the Inspector will update automatically.
 
-<Tip>Hold **Shift** while dragging a corner handle to maintain the layer's aspect ratio.</Tip>
+<Tip>Hold **Shift** while dragging a corner handle to maintain the layer's aspect ratio. Hold **Alt** (Windows) or **Option** (Mac) to resize from the centre.</Tip>
 
 ### Rotating Layers
 
@@ -95,6 +96,16 @@ The Bounds Width and Bounds Height values in the Inspector will update automatic
 4. Release to apply the rotation
 
 The Rotation value in the Inspector will update automatically.
+
+---
+
+## Visual Feedback
+
+While interacting with layers on the canvas, you will see real-time feedback:
+
+- **Guides**: Purple lines appear when you are aligned with the center of the canvas or with other layers.
+- **Tooltips**: Small labels appear near your cursor showing the exact **Width**, **Height**, or **Position** as you move and resize.
+- **Snapping**: Your layer will "stick" to key points (like edges) to help with accuracy.
 
 ---
 

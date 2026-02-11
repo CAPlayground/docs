@@ -3,197 +3,77 @@ title: "Video Layers"
 description: "Complete guide to creating and customizing video layers in CAPlayground."
 ---
 
-Video layers display animated videos and GIFs, bringing motion to your wallpapers.
+Video layers (CAKeyframeAnimation with CGImage contents) display animated videos and GIFs.
 
 ## Creating a Video Layer
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Video Layer…**
-3. Choose a video file or GIF from your computer
-4. The video will be processed and added to your project
+### Method 1: Local Files
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Video Layer…**.
+3. Choose an MP4, MOV, or GIF file from your computer.
+
+### Method 2: Import from Link
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Import from Link**.
+3. Paste the URL of the video/GIF and click **Import**.
 
 <Info>
-  Video processing may take a few moments depending on the file size and length.
+  **Note:** GIFs must be imported as Video Layers to maintain their animation. They will be automatically converted to frame-based animations.
 </Info>
-
----
-
-## Supported Formats
-
-**Video files:**
-- MP4
-- MOV
-- WebM
-- Other common video formats
-
-**Animated images:**
-- GIF (.gif)
-
----
-
-## Video Limitations
-
-To ensure good performance on iOS devices, video layers have these limitations:
-
-### Frame Rate
-- **Maximum: 30 fps** (frames per second)
-- Videos with higher frame rates will be converted to 30 fps
-
-### Duration
-- **Maximum: 12 seconds**
-
-### File Size
-- Keep video files under 10MB for best performance
-- Smaller files = faster loading and better device performance
-
-<Warning>
-  Video layers are **very resource-intensive** when applied as wallpapers. Use them sparingly and test on your device to ensure acceptable performance.
-</Warning>
 
 ---
 
 ## Video Properties
 
-### Frame Count
+These properties are found in the **Video** tab of the Inspector Panel.
 
-The total number of frames in the video:
-- Automatically calculated when you upload a video
-- Read-only (cannot be changed directly)
-- Displayed in the **Video** tab
-
-### FPS (Frames Per Second)
-
-The frames per second of the video:
-- 30 fps (maximum)
-
-### Duration
-
-The total length of the video in seconds:
-- Automatically calculated: `duration = frameCount / fps`
-- Maximum: 12 seconds highly recommended
-
-### Auto Reverses
-
-Controls whether the video plays in reverse after reaching the end:
-
-**Off (default):**
-- Video plays from start to end
-- Loops back to the start
-- Example: Frame 1 → 2 → 3 → 4 → 5 → 1 → 2 → ...
-
-**On:**
-- Video plays forward, then backward
-- Creates a seamless loop
-- Example: Frame 1 → 2 → 3 → 4 → 5 → 4 → 3 → 2 → 1 → 2 → ...
-
-**To enable:**
-1. Select the video layer
-2. In the **Video** tab, find **Auto Reverses**
-3. Toggle to ON
-
-<Tip>
-  Auto Reverse is great for creating seamless looping animations!
-</Tip>
+### Performance Limitations
+To ensure your wallpaper runs smoothly on a mobile device:
+- **Max Frame Rate**: 30 FPS.
+- **Max Duration**: 12 seconds recommended.
+- **Auto Reverses**: Toggle this to make the video play forward then backward for a seamless loop.
 
 ### Calculation Mode
-
-Controls how frames are interpolated:
-
-**Linear (default):**
-- Smooth transitions between frames
-- Frames blend together slightly
-
-**Discrete:**
-- Sharp transitions between frames
-- No blending, each frame is distinct
-- Better for pixel art or stop-motion style
+Controls how frames transition:
+- **Linear**: Smoothly blends between frames.
+- **Discrete**: Sharp jumps between frames (useful for pixel art or stop-motion).
 
 ---
 
 ## Common Properties
 
-Video layers support all standard layer properties:
+Video layers support all standard properties in the **Geometry** and **Compositing** tabs.
 
-### Position and Bounds
+### Geometry
+- **Position (X, Y)**: Location on the canvas.
+- **Bounds (W, H)**: Match this to your video's aspect ratio to avoid stretching.
+- **Rotation**: Rotate your video in 2D or 3D.
 
-- **Position (X, Y)**: Location on the canvas
-- **Bounds (W, H)**: Dimensions of the video
-
-### Opacity
-
-- **Opacity**: 0% (invisible) to 100% (fully opaque)
-- Affects the entire video
-
-### Rotation
-
-- **Rotation Z**: Rotate around the Z-axis (degrees)
-- **Rotation X/Y**: 3D rotation effects (advanced)
-
----
-
-## Troubleshooting
-
-### "My video won't upload"
-
-**Check:**
-- Is the file a supported format? (MP4, MOV, WebM, GIF)
-- Is the file size reasonable? (under 50MB)
-- Is your internet connection stable?
-
-**Solutions:**
-- Try a different video format
-- Compress the video
-- Try a shorter video
-
-### "Video playback is choppy on my device"
-
-**Solutions:**
-- Reduce the **FPS** (try 15 or 20 instead of 30)
-- Reduce the video resolution
-- Shorten the video duration
-- Compress the video file
-- Remove other video layers
-
-### "Video looks distorted"
-
-**Solutions:**
-- Adjust the layer size to match the video's aspect ratio
-- Check that you're not stretching the video
-
-### "Video doesn't loop smoothly"
-
-**Solutions:**
-- Enable **Auto Reverses** for automatic seamless loops
-- Or edit the video to create a seamless loop (end matches beginning)
-- Adjust **FPS** for better timing
-- This might just be in the editor, not shown once applied to the device
-
-### "GIF won't upload as an image"
-
-This is expected! GIFs must be uploaded as **Video Layers**:
-
-1. Click **Add Layer** → **Video Layer…**
-2. Select your GIF
-3. It will be imported as a video layer
+### Compositing
+- **Opacity**: Adjust transparency from 0% to 100%.
+- **Corner Radius**: Round the corners of your video.
 
 ---
 
 ## Performance Warning
 
 <Warning>
-  **Important:** Video layers are the most resource-intensive layer type. They can significantly impact:
-  
-  - Battery life on your device
-  - Device heat and performance
-  - Wallpaper smoothness
-  
-  **Recommendations:**
-  - Use 1 video layer maximum for best performance
-  - Test thoroughly on your actual device
-  - Consider using animations instead of videos when possible
-  - Keep videos short (2-5 seconds)
-  - Use lower frame rates (15-20 fps)
+  Video layers are the most resource-intensive layer type. Using too many can drain battery or cause the wallpaper to lag. Use them sparingly!
 </Warning>
+
+---
+
+## Troubleshooting
+
+### "My video doesn't play"
+**Check:**
+- Is the file format supported? (MP4, MOV, GIF).
+- Is the **Opacity** set to 0%?
+- Try re-importing the file if the processing failed.
+
+### "The video is stretched"
+**Solution:**
+- Adjust the **Width** and **Height** in the Geometry tab to match the original video's resolution.
 
 ---
 
@@ -204,12 +84,9 @@ This is expected! GIFs must be uploaded as **Video Layers**:
     Use static images for better performance
   </Card>
   <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Animate static layers (more performant)
-  </Card>
-  <Card title="Emitter Layers" icon="sparkles" href="/layers/emitter-layers">
-    Create particle effects
+    Use animations for simple movements
   </Card>
   <Card title="Export Your Project" icon="download" href="/editor/export-your-project">
-    Export and test on your device
+    Test the video on your device
   </Card>
 </CardGroup>

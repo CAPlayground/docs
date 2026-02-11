@@ -3,170 +3,115 @@ title: "Image Layers"
 description: "Complete guide to creating and customizing image layers in CAPlayground."
 ---
 
-Image layers display images from your computer, including photos, illustrations, logos, and icons.
+Image layers display static images like photos, logos, and icons. CAPlayground supports PNG, JPEG, and SVG formats.
 
 ## Creating an Image Layer
 
-### Method 1: Add Layer Menu
+### Method 1: Local Files
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Image Layer…**.
+3. Choose one or more images from your computer.
 
-1. Click **Add Layer** in the Layers Panel
-2. Select **Image Layer…**
-3. Choose one or more image files from your computer
+### Method 2: Import from Link
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Import from Link**.
+3. Paste the URL of the image and click **Import**.
 
-### Method 2: Drag and Drop
-1. Drag an image file from your computer
-2. Drop it onto the canvas
-3. An image layer will be created
+### Method 3: Drag and Drop
+- Simply drag an image file from your computer directly onto the editor canvas.
 
-<Tip>
-  You can select multiple images from your computer at once to create multiple image layers quickly!
-</Tip>
+<Info>
+  **SVG Support:** SVGs are automatically converted to PNGs when imported to ensure compatibility with all devices. 
+</Info>
 
 ---
 
-## Supported Image Formats
+## Image Properties
 
-CAPlayground supports the following image formats:
+These properties are found in the **Content** tab of the Inspector Panel.
 
-- **PNG** (.png) - Best for graphics with transparency
-- **JPEG** (.jpg, .jpeg) - Best for photos
+### Fit Mode
+Controls how the image fills the layer's bounds.
+- **Cover**: Spans the entire layer, cropping the image if necessary.
+- **Contain**: Shows the whole image, adding empty space if necessary.
+- **Fill**: Stretches the image to fit exactly (may look distorted).
+- **None**: Keeps the image at its original size.
 
-<Warning>
-  **GIF files** (.gif) must be imported as **Video Layers**, not Image Layers. CAPlayground will show a warning if you try to upload a GIF as an image. GIFs will be turned into videos layers that loop.
-</Warning>
+---
+
+## Editing Images
+
+CAPlayground includes built-in tools for permanent image modifications. These tools create a new version of your image and replace the original in your project.
+
+### Crop
+The Crop tool allows you to select a specific portion of your image.
+1. Select your image layer.
+2. Go to the **Content** tab.
+3. Click **Crop**.
+4. Adjust the green selection handles to your desired area.
+5. Choose **Maintain bounds after crop** if you want the layer to keep its current size on the canvas.
+6. Click **Apply crop**.
+
+### Permanent Blur
+Use this to bake a blur effect directly into the image file.
+1. Click **Blur** in the **Content** tab.
+2. Adjust the **Blur Amount** slider.
+3. Click **Apply Blur**.
+
+<Tip>
+  **Permanent vs. Dynamic Blur:** Use the **Blur Tool** for a permanent background effect (better performance). Use the **Filters Tab** for a blur that you want to animate over time.
+</Tip>
+
+### Reset Bounds
+If you've resized your image layer and want it to return to its original width and height, click **Reset Bounds**.
+
+---
+
+## Filters (Dynamic Editing)
+
+In the **Filters** tab, you can add non-destructive effects that can be adjusted or animated later.
+
+- **Gaussian Blur**: A dynamic blur effect.
+- **Contrast, Saturation, Sepia**: Traditional color adjustments.
+- **Hue Rotate**: Shift all colors in the image.
+- **Invert**: Flip the colors of the image.
 
 ---
 
 ## Common Properties
 
-Image layers support all standard layer properties:
+Image layers support all standard properties in the **Geometry** and **Compositing** tabs.
 
-### Position and Bounds
+### Geometry
+- **Position (X, Y)**: Location on the canvas.
+- **Bounds (W, H)**: The size of the layer. Match this to your image's aspect ratio for the best look.
+- **Rotation**: Rotate your image in 2D or 3D.
 
-- **Position (X, Y)**: Location on the canvas
-- **Bounds (W, H)**: Dimensions of the layer bounds
-
-### Opacity
-
-- **Opacity**: 0% (invisible) to 100% (fully opaque)
-- Great for overlay effects and blending
-
-### Rotation
-
-- **Rotation Z**: Rotate around the Z-axis (degrees)
-- **Rotation X/Y**: 3D rotation effects (advanced)
-
-### Corner Radius
-
-- **Corner Radius**: Round the corners of the image
-- Creates circular or rounded rectangle images
-
-### Background and Border
-
-- **Background Color**: Color behind transparent areas
-- **Border Color**: Border around the image
-- **Border Width**: Thickness of the border
+### Compositing
+- **Opacity**: Adjust transparency from 0% to 100%.
+- **Corner Radius**: Round the corners of your image to create circles or rounded frames.
 
 ---
 
 ## Best Practices
 
-### Image Size and Resolution
-
-**Optimize for performance:**
-- Don't use unnecessarily large images
-- Resize images to your canvas dimensions before uploading
-
-**File size:**
-- Keep images under 2MB each
-- Use JPEG for photos (smaller file size)
-- Use PNG for graphics with transparency
-
-### Transparency
-
-**PNG with transparency:**
-- Use for logos, icons, and graphics
-- Allows layers below to show through
-- Slightly larger file size than JPEG
-
-**Removing backgrounds:**
-- Remove backgrounds before uploading
-- Use tools like Photoshop, GIMP, or online background removers
-
-### Image Quality
-
-**Choose appropriate formats:**
-- **Photos**: JPEG (smaller) or PNG (higher quality)
-- **Graphics/logos**: PNG or SVG
-- **Icons**: PNG or SVG
-
-**Avoid compression artifacts:**
-- Use high-quality source images
-- Don't over-compress JPEGs
-
----
-
-## Advanced Techniques
-
-### Image Masking
-
-Use shapes to mask images:
-
-1. Create an image layer
-2. Create a basic layer (e.g., circle) as a container for the image layer, set to 0% opacity
-3. Add the image as a sublayer
-4. Enable **Clip Contents** on the basic layer
-5. The image will be clipped to the shape
-
-[Learn more about layer hierarchy →](/editor/layer-hierarchy)
+- **File Size**: Keep images under 2MB for faster loading and better performance.
+- **Transparency**: Use PNGs with transparency for logos and icons.
+- **Resolution**: Use images that match the resolution of your device for maximum sharpness.
 
 ---
 
 ## Troubleshooting
 
-### "My image looks stretched or distorted"
-
-**Solutions:**
-- Adjust the layer's size to match the image's aspect ratio
-
-### "My image is cropped"
-
-**Solutions:**
-- Check that the image isn't larger than the layer bounds
+### "My image looks stretched"
+**Solution:**
+- Check your **Fit Mode**. Set it to **Cover** or **Contain** to maintain the correct aspect ratio.
 
 ### "I can't see my image"
-
-**Check these:**
-- Is the layer's opacity > 0?
-- Is the layer visible?
-- Is the image behind other opaque layers?
-- Is the layer size large enough?
-- Did the image upload successfully?
-
-### "My image has a white background (but shouldn't)"
-
-**Solutions:**
-- Make sure you uploaded a PNG with transparency
-- Check that the original image has transparency
-- Remove the background using an image editor before uploading
-
-### "The image quality looks poor"
-
-**Solutions:**
-- Upload a higher resolution image
-- Use PNG instead of JPEG for graphics
-- Avoid over-compressing the image
-- Make sure the source image is high quality
-
-### "GIF won't upload as an image"
-
-GIFs are animated and must be uploaded as **Video Layers**, not Image Layers.
-
-1. Click **Add Layer** → **Video Layer…**
-2. Select your GIF file
-3. It will be imported as an animated video layer
-
-[Learn more about video layers →](/layers/video-layers)
+**Check:**
+- Is **Opacity** set to 0%?
+- Is the layer hidden?
+- Did the upload finish? Large files may take a moment to appear.
 
 ---
 
@@ -174,15 +119,15 @@ GIFs are animated and must be uploaded as **Video Layers**, not Image Layers.
 
 <CardGroup cols={2}>
   <Card title="Video Layers" icon="video" href="/layers/video-layers">
-    Add animated GIFs and videos
-  </Card>
-  <Card title="Gradient Layers" icon="palette" href="/layers/gradient-layers">
-    Combine images with gradients
-  </Card>
-  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
-    Animate your images
+    Add moving GIFs and videos
   </Card>
   <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
-    Mask images with shapes
+    Mask images with other layers
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Bring your images to life
+  </Card>
+  <Card title="Export Your Project" icon="download" href="/editor/export-your-project">
+    Test your design on device
   </Card>
 </CardGroup>

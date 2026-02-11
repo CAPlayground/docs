@@ -1,39 +1,105 @@
 ---
 title: "Replicator Layers"
-description: "Front-end controls for creating repeated instances of a layer."
+description: "Complete guide to creating and customizing replicator layers in CAPlayground."
 ---
 
-Replicator layers duplicate a source layer into multiple instances and apply offsets between each instance.
+Replicator layers (CAReplicatorLayer) are powerful containers that duplicate their sublayers into multiple instances, applying cumulative transformations like translation, rotation, and scaling to each successive copy.
 
 ## Creating a Replicator Layer
 
-1. Click Add Layer
-2. Select Replicator Layer
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Replicator Layer**.
+3. A new replicator layer will be added. 
+
+<Info>
+  **Important:** Replicator layers work by duplicating their **sublayers**. You must add one or more layers inside the replicator layer to see any duplicated instances!
+</Info>
 
 ---
 
-## Inspector: Replicator Tab
+## Replicator Properties
 
-The Replicator tab exposes these properties:
+These properties are found in the **Replicator** tab of the Inspector Panel when a replicator layer is selected.
 
-- **Instance Count**
-  Number of total instances, including the original. Integer >= 1.
+### Instance Count
+Controls how many total copies are rendered, including the original sublayers.
+1. Find **Instance Count** in the Replicator tab.
+2. Enter a value (e.g., 5 will create the original + 4 copies).
 
-- **Instance Translation**
-  Per-instance offset in pixels applied cumulatively.
-  - X
-  - Y
-  - Z
+### Instance Translation (X, Y, Z)
+The offset applied to each successive instance.
+- **X/Y**: Moves each copy horizontally or vertically relative to the previous one.
+- **Z**: Moves copies forward or backward in 3D space.
 
-- **Instance Rotation**
-  Per-instance rotation offset around the Z axis, in degrees.
+### Instance Rotation (Z, X, Y)
+The rotation applied to each successive instance.
+- **Z Rotation**: Useful for creating circular patterns or fans.
+- **X/Y Rotation**: Useful for 3D spiraling effects.
 
-- **Instance Delay**
-  Delay in seconds between instances for animations. Floating-point, >= 0.
+### Instance Scale
+The scale factor applied to each successive instance. Values less than 1.0 make each copy smaller, while values greater than 1.0 make them larger.
+
+### Instance Delay
+The time delay (in seconds) applied to animations of sublayers for each instance. This creates "follow-the-leader" or wave-like animation effects.
 
 ---
 
-## Notes
+## Common Properties
 
-- Replicator applies the offsets for each successive instance. Small values can create evenly spaced grids or circular arrays when combined with rotation.
-- All properties are edited from the Inspector and support direct numeric input and Enter-to-commit, matching the UI behaviour.
+Replicator layers support all standard layer properties in the **Geometry** and **Compositing** tabs, affecting the container as a whole.
+
+### Geometry
+- **Position (X, Y)**: Location of the entire replicator group.
+- **Bounds (W, H)**: The size of the replicator container.
+- **Anchor Point**: The point around which the translation/rotation offsets are calculated.
+
+### Compositing
+- **Opacity**: Fade the entire group of instances.
+- **Hidden**: Hide all instances at once.
+- **Preserves Depth**: (Advanced) Enabling this allows sublayers to maintain their 3D positions relative to each other.
+
+---
+
+## Tips & Tricks
+
+### Creating a Grid
+You can nest replicators! Put a "horizontal" replicator inside a "vertical" replicator to create a grid of elements.
+
+### Circular Arrays
+1. Set the **Instance Count** to the number of items you want in the circle.
+2. Set the **Instance Rotation (Z)** to `360 / count`.
+3. Adjust the sublayer's position relative to the replicator's center to set the radius.
+
+---
+
+## Troubleshooting
+
+### "I only see one layer"
+**Check:**
+- Did you add sublayers *inside* the replicator layer?
+- Is the **Instance Count** set to more than 1?
+- Is the **Instance Translation** or **Instance Rotation** set to something other than 0? If they are 0, all copies are stacked exactly on top of each other.
+
+### "Animations aren't offset"
+**Check:**
+- Did you set an **Instance Delay**?
+- Are the animations applied to the sublayers *inside* the replicator, rather than the replicator itself?
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Layer Hierarchy" icon="sitemap" href="/editor/layer-hierarchy">
+    Learn how to organize sublayers
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Animate sublayers for complex effects
+  </Card>
+  <Card title="Emitter Layers" icon="sparkles" href="/layers/emitter-layers">
+    Create particle-based duplications
+  </Card>
+  <Card title="Transform Layers (Gyro)" icon="mobile-screen" href="/layers/transform-layers-gyro">
+    Combine replicators with gyro effects
+  </Card>
+</CardGroup>

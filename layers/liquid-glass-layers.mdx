@@ -1,0 +1,76 @@
+---
+title: "Liquid Glass Layers"
+description: "Complete guide to creating and customizing liquid glass effects in CAPlayground."
+---
+
+Liquid glass layers create a realistic glass distortion effect (refraction) that warps the layers behind them. 
+
+<Warning>
+  **Browser Compatibility:** This layer uses advanced CSS features that only work in **Chromium-based browsers** (Chrome, Edge, Opera). It will not be visible in Safari or Firefox in the editor, but it will work correctly once applied as a wallpaper on your device.
+</Warning>
+
+## Creating a Liquid Glass Layer
+
+1. Click **Add Layer** in the Layers Panel.
+2. Select **Liquid Glass Layer**.
+3. A transparent distortion box will appear on your canvas.
+
+---
+
+## Liquid Glass Properties
+
+These properties are found in the **Content** tab of the Inspector Panel.
+
+### Strength
+Controls how much the background is distorted. Higher values create more intense warping.
+
+### Depth
+Controls the perceived thickness of the glass. 
+
+### Chromatic Aberration
+Adds a color-fringing effect to the edges of the distortion, simulating how real glass prisms split light into colors.
+
+---
+
+## Common Properties
+
+Liquid Glass layers support standard properties in the **Geometry** and **Compositing** tabs.
+
+### Geometry
+- **Position (X, Y)**: Location on the canvas.
+- **Bounds (W, H)**: The size of the glass area.
+- **Rotation**: Rotate the glass box.
+
+### Compositing
+- **Corner Radius**: Round the edges of the glass (e.g., to create a glass orb or pill).
+- **Opacity**: Adjust the visibility of the distortion effect.
+
+---
+
+## Troubleshooting
+
+### "I can't see anything"
+**Check:**
+- Are you using a Chromium-based browser (Chrome/Edge)?
+- Is there something *behind* the glass layer? If the background is a solid color, the distortion might be hard to see. Place it over an image or text.
+- Is **Strength** set to 0?
+
+### "The effect is too strong"
+**Solution:**
+- Reduce the **Strength** and **Depth** values in the Content tab.
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Image Layers" icon="image" href="/layers/image-layers">
+    Place glass over beautiful photos
+  </Card>
+  <Card title="Creating Animations" icon="play" href="/editor/creating-animations">
+    Animate the glass moving across the screen
+  </Card>
+  <Card title="Export Your Project" icon="download" href="/editor/export-your-project">
+    Test the effect on your device
+  </Card>
+</CardGroup>

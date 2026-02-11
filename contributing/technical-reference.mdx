@@ -1,0 +1,122 @@
+---
+title: "Technical Reference"
+description: "A comprehensive list of supported layers, properties, filters, and keypaths in CAPlayground."
+---
+
+This reference guide is intended for developers and advanced users who want to understand the underlying data structure and supported features of the CAPlayground engine.
+
+## Supported Layer Types
+
+Each layer in CAPlayground maps to an internal "Project Tag" used in the `.tendies` and `.CA` files, and corresponds to a native Apple **Core Animation** class (or a custom implementation).
+
+| Type | Project Tag | Core Animation Class | Description |
+| :--- | :--- | :--- | :--- |
+| **Basic** | `basic` | `CALayer` | A standard rectangular layer with fill and border. |
+| **Text** | `text` | `CATextLayer` | Renders text with custom fonts and alignment. |
+| **Image** | `image` | `CALayer` | Displays static image assets via `contents`. |
+| **Video** | `video` | `CAKeyframeAnimation` | Displays animated GIFs and MP4s via frame-based content swaps. |
+| **Gradient** | `gradient` | `CAGradientLayer` | Renders axial, radial, or conic gradients. |
+| **Emitter** | `emitter` | `CAEmitterLayer` | High-performance particle system. |
+| **Replicator** | `replicator` | `CAReplicatorLayer` | Duplicates sublayers with cumulative offsets. |
+| **Transform** | `transform` | `CATransformLayer` | A 3D container that preserves depth for its children. |
+| **Liquid Glass** | `liquidGlass` | `CALayer` + Filters | **Specialized:** Not a native CA class. It is a standard layer with specialized background filters and distortion maps. |
+
+---
+
+## Core Layer Properties
+
+These properties are common to almost all layer types (`LayerBase`).
+
+| Property | KeyPath | Type | Animatable |
+| :--- | :--- | :--- | :--- |
+| **Position X** | `position.x` | `number` | Yes |
+| **Position Y** | `position.y` | `number` | Yes |
+| **Z Position** | `zPosition` | `number` | Yes |
+| **Width** | `bounds.size.width` | `number` | Yes |
+| **Height** | `bounds.size.height` | `number` | Yes |
+| **Opacity** | `opacity` | `number` (0-1) | Yes |
+| **Rotation Z** | `transform.rotation.z` | `number` (deg) | Yes |
+| **Rotation X** | `transform.rotation.x` | `number` (deg) | Yes |
+| **Rotation Y** | `transform.rotation.y` | `number` (deg) | Yes |
+| **Corner Radius** | `cornerRadius` | `number` | Yes |
+| **Background Color** | `backgroundColor` | `hex string` | No |
+| **Border Width** | `borderWidth` | `number` | No |
+| **Border Color** | `borderColor` | `hex string` | No |
+
+---
+
+## Supported Filters
+
+Filters are applied via the **Filters** tab. All filter values are animatable.
+
+| Filter Name | Internal Type | Value Label | Range/Unit |
+| :--- | :--- | :--- | :--- |
+| **Gaussian Blur** | `gaussianBlur` | Radius | Pixels |
+| **Contrast** | `colorContrast` | Amount | Multiplier (1.0 = Default) |
+| **Hue Rotate** | `colorHueRotate` | Angle | Degrees |
+| **Saturate** | `colorSaturate` | Amount | Multiplier (1.0 = Default) |
+| **Sepia** | `CISepiaTone` | Intensity | 0.0 to 1.0 |
+| **Invert** | `colorInvert` | (None) | Toggle |
+
+---
+
+## State Transition Properties
+
+The following properties can be modified between states (e.g., Locked -> Unlock). When a state changes, these properties will animate smoothly.
+
+- `position.x` / `position.y`
+- `zPosition`
+- `bounds.size.width` / `bounds.size.height`
+- `transform.rotation.z` / `transform.rotation.x` / `transform.rotation.y`
+- `opacity`
+- `cornerRadius`
+- `borderWidth` / `borderColor`
+- `backgroundColor`
+- `fontSize` / `color` (Text Layers only)
+
+---
+
+## Gyro Tilt KeyPaths
+
+When configuring **Gyro Dictionaries** on a Transform Layer, you can map device tilt to the following properties:
+
+| KeyPath | Effect |
+| :--- | :--- |
+| `position.x` / `position.y` | Slides the layer horizontally or vertically. |
+| `transform.translation.x` / `y` | Similar to position, but relative to the layer's local space. |
+| `transform.rotation.x` | Tilts the layer forward or backward (3D). |
+| `transform.rotation.y` | Tilts the layer left or right (3D). |
+| `transform.rotation.z` | Rotates the layer clockwise or counter-clockwise. |
+| `opacity` | Fades the layer in/out based on tilt. |
+
+---
+
+## Advanced Layer Properties
+
+### Video Layer (`video`)
+- `frameCount`: Total number of frames in the sequence.
+- `fps`: playback speed (default: 30).
+- `autoReverses`: When true, plays forward then backward.
+- `calculationMode`: `linear` (blended) or `discrete` (stepped).
+- `syncWWithState`: Enables frame-sync with state transitions (Locked/Unlock).
+
+### Emitter Layer (`emitter`)
+Particles are defined in `emitterCells` (`CAEmitterCell[]`). Key properties per cell:
+- `birthRate`: Particles per second.
+- `lifetime`: Duration of each particle.
+- `velocity`: Movement speed.
+- `emissionRange`: Spread angle (radians).
+- `scale` / `scaleSpeed`: Initial size and growth/shrink rate.
+- `alphaSpeed`: Fade rate over time.
+
+---
+
+## Naming Conventions & IDs
+
+- **Layer IDs**: Must be unique within the project. The editor typically generates UUIDs.
+- **Asset Paths**: Relative paths (e.g., `assets/image.png`).
+- **State Names**: The default states are `Base State`, `Locked`, `Unlock`, and `Sleep`.
+
+<Info>
+  **Note on Coordinates:** CAPlayground uses a normalized coordinate system for some properties (like `anchorPoint` 0.0 to 1.0) and pixel-based coordinates for `position` and `size`.
+</Info>
